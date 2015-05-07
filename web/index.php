@@ -1,22 +1,16 @@
-<?php
-
-require('../vendor/autoload.php');
-
-$app = new Silex\Application();
-$app['debug'] = true;
-
-// Register the monolog logging service
-$app->register(new Silex\Provider\MonologServiceProvider(), array(
-  'monolog.logfile' => 'php://stderr',
-));
-
-// Our web handlers
-
-$app->get('/', function() use($app) {
-  $app['monolog']->addDebug('logging output.');
-  return 'Hello';
-});
-
-$app->run();
-
-?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Friendstr</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+<?php include_once("template_pageTop.php"); ?>
+<div id="pageMiddle">
+  &nbsp;
+</div>
+<?php include_once("template_pageBottom.php"); ?>
+</body>
+</html>
