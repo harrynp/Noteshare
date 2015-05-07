@@ -22,7 +22,7 @@ if(isset($_POST["e"])){
         exit();
 	} else {
 	// END FORM DATA ERROR HANDLING
-		$sql = "SELECT id, username, password FROM users WHERE email='$e' AND activated='1' LIMIT 1";
+		$sql = "SELECT id, username, password FROM users WHERE (email='$e' or username='$e') AND activated='1' LIMIT 1";
         $query = mysqli_query($db_conx, $sql);
         $row = mysqli_fetch_row($query);
 		$db_id = $row[0];
@@ -80,7 +80,7 @@ function emptyElement(x){
 	_(x).innerHTML = "";
 }
 function login(){
-	var e = _("email").value;
+	var e = _("email_user").value;
 	var p = _("password").value;
 	if(e == "" || p == ""){
 		_("status").innerHTML = "Fill out all of the form data";
@@ -109,8 +109,8 @@ function login(){
   <h3>Log In Here</h3>
   <!-- LOGIN FORM -->
   <form id="loginform" onsubmit="return false;">
-    <div>Email Address:</div>
-    <input type="text" id="email" onfocus="emptyElement('status')" maxlength="88">
+    <div>Email Address or Username:</div>
+    <input type="text" id="email_user" onfocus="emptyElement('status')" maxlength="88">
     <div>Password:</div>
     <input type="password" id="password" onfocus="emptyElement('status')" maxlength="100">
     <br /><br />
