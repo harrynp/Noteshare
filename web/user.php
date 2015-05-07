@@ -131,7 +131,7 @@ if($friend_count < 1){
 		if($friend_avatar != ""){
 			$friend_pic = 'user/'.$friend_username.'/'.$friend_avatar.'';
 		} else {
-			$friend_pic = 'images/avatardefault.jpg';
+			$friend_pic = 'images/avatardefault.gif';
 		}
 		$friendsHTML .= '<a href="user.php?u='.$friend_username.'"><img class="friendpics" src="'.$friend_pic.'" alt="'.$friend_username.'" title="'.$friend_username.'"></a>';
 	}
