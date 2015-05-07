@@ -8,11 +8,9 @@ function restrict(elem){
   }
   tf.value = tf.value.replace(rx, "");
 }
-
 function emptyElement(x){
   _(x).innerHTML = "";
 }
-
 function checkusername(){
   var u = _("username").value;
   if(u != ""){
@@ -29,15 +27,15 @@ function checkusername(){
 
 function checkEmail() {
   var email = _("email").value;
-  if( email != ""){
-    _("email_status").innerHTML = 'checking...';
-    var ajax = ajaxObj("POST", "signup.php");
-        ajax.onreadystatechange = function() {
-          if(ajaxReturn(ajax) == true) {
-              _("email_status").innerHTML = ajax.responseText;
-          }
-        }
-        ajax.send("emailcheck="+email);
+  var email_status = _("email_status")
+  var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+  if(!re.test(email)){
+    email_status.style.color= "#f66"
+    email_status.innerHTML = "Invalid email address";
+  }
+  else{
+    email_status.style.color= "#6c6"
+    email_status.innerHTML = "Valid email address";
   }
 }
 

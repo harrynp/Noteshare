@@ -38,29 +38,6 @@ if(isset($_POST["usernamecheck"])){
     }
 }
 ?><?php
-	if(isset($_POST["emailcheck"])){
-		include_once("php_includes/db_conx.php");
-		$email = $_POST['emailcheck'];
-		if(filter_var($email, FILTER_VALIDATE_EMAIL)){
-		$sql = "SELECT id FROM users WHERE email='$email' LIMIT 1";
-			$query = mysqli_query($db_conx, $sql);
-			$email_check = mysqli_num_rows($query);
-			if($email_check < 1){
-				echo '<strong style="color:#6c6;">Valid email address</strong>';
-				exit();
-			}
-			else{
-				echo '<strong style="color:#f66;">This email address is already taken.</strong>';
-				exit();
-			}
-
-		}
-		else{
-			echo '<strong style="color:#f66;">Invalid email address</strong>';
-			exit();
-		}
-	}
-?><?php
 // Ajax calls this REGISTRATION code to execute
 if(isset($_POST["u"])){
 	// CONNECT TO THE DATABASE
