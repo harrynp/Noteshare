@@ -1,6 +1,6 @@
 <?php
 include_once("php_includes/check_login_status.php");
-$envelope = '<img src="images/notifications.png" width="22" height="12" alt="Notes" title="This envelope is for logged in members">';
+$envelope = ''
 $loginLink = '<a href="login.php">Log In</a> &nbsp; | &nbsp; <a href="signup.php">Sign Up</a>';
 $user_profile = "";
 if($user_ok == true) {
