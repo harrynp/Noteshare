@@ -41,7 +41,7 @@ if($numrows < 1){
 		$user1avatar = $thumbrow[0];
 		$user1pic = '<img src="user/'.$user1.'/'.$user1avatar.'" alt="'.$user1.'" class="user_pic">';
 		if($user1avatar == NULL){
-			$user1pic = '<img src="images/avatardefault.jpg" alt="'.$user1.'" class="user_pic">';
+			$user1pic = '<img src="images/avatardefault.gif" alt="'.$user1.'" class="user_pic">';
 		}
 		$friend_requests .= '<div id="friendreq_'.$reqID.'" class="friendrequests">';
 		$friend_requests .= '<a href="user.php?u='.$user1.'">'.$user1pic.'</a>';
