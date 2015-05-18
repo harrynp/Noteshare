@@ -15,8 +15,8 @@ $tbl_users = "CREATE TABLE IF NOT EXISTS users (
 			  signup DATETIME NOT NULL,
 			  lastlogin DATETIME NOT NULL,
 			  notescheck DATETIME NOT NULL,
-			  -- activated ENUM('0','1') NOT NULL DEFAULT '0',
-        activated ENUM('0','1') NOT NULL DEFAULT '1',
+			  activated ENUM('0','1') NOT NULL DEFAULT '0',
+        -- activated ENUM('0','1') NOT NULL DEFAULT '1',
               PRIMARY KEY (id),
 			  UNIQUE KEY username (username,email)
              )";
