@@ -117,7 +117,7 @@ if(isset($_POST["u"])){
 		}
 		// Email the user their activation link
 		//require 'vendor/autoload.php';
-		include_once('vendor/autoload.php')
+		include_once('vendor/autoload.php');
 		$sendgrid = new SendGrid('app36608097@heroku.com', 'zeqckzkd7900');
 		$email = new SendGrid\Email();
 		$email->addTo('$e')->
