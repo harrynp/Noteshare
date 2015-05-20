@@ -12,7 +12,6 @@ if(isset($_POST["e"])){
 	include_once("php_includes/db_conx.php");
 	// GATHER THE POSTED DATA INTO LOCAL VARIABLES AND SANITIZE
 	$e = mysqli_real_escape_string($db_conx, $_POST['e']);
-	// $p = crypt($_POST['p']);
 	$p = $_POST['p'];
 	// GET USER IP ADDRESS
     $ip = preg_replace('#[^0-9.]#', '', getenv('REMOTE_ADDR'));
@@ -22,20 +21,23 @@ if(isset($_POST["e"])){
         exit();
 	} else {
 	// END FORM DATA ERROR HANDLING
-		$sql = "SELECT id, username, password FROM users WHERE (email='$e' or username='$e') AND activated='1' LIMIT 1";
+		$sql = "SELECT id, username, password_hash, salt FROM users WHERE (email='$e' or username='$e') AND activated='1' LIMIT 1";
         $query = mysqli_query($db_conx, $sql);
         $row = mysqli_fetch_row($query);
 		$db_id = $row[0];
 		$db_username = $row[1];
-        $db_pass_str = $row[2];
-		if($p != $db_pass_str){
+    $db_pass_hash = $row[2];
+		$salt = $row[3];
+		$p_hash = hash('sha256', $p.$salt)
+		$
+		if($p_hash != $db_pass_hash){
 			echo "login_failed";
             exit();
 		} else {
 			// CREATE THEIR SESSIONS AND COOKIES
 			$_SESSION['userid'] = $db_id;
 			$_SESSION['username'] = $db_username;
-			$_SESSION['password'] = $db_pass_str;
+			$_SESSION['password'] = $db_pass_hash;
 			setcookie("id", $db_id, strtotime( '+30 days' ), "/", "", "", TRUE);
 			setcookie("user", $db_username, strtotime( '+30 days' ), "/", "", "", TRUE);
     		setcookie("pass", $db_pass_str, strtotime( '+30 days' ), "/", "", "", TRUE);

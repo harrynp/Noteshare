@@ -101,11 +101,14 @@ if(isset($_POST["u"])){
 	// END FORM DATA ERROR HANDLING
 	    // Begin Insertion of data into the database
 		// Hash the password and apply your own mysterious unique salt
-		// $p_hash = crypt($p);
-		$p_hash = $p;
+		$salt = crypt($p)
+	  $p_hash = hash('sha256', $p.$salt)
+
+
+		<!-- $p_hash = $p; -->
 		// Add user info into the database table for the main site table
-		$sql = "INSERT INTO users (username, email, password, gender, country, ip, signup, lastlogin, notescheck)
-		        VALUES('$u','$e','$p_hash','$g','$c','$ip',now(),now(),now())";
+		$sql = "INSERT INTO users (username, email, password_hash, salt, gender, country, ip, signup, lastlogin, notescheck)
+		        VALUES('$u','$e','$p_hash', $s, '$g','$c','$ip',now(),now(),now())";
 		$query = mysqli_query($db_conx, $sql);
 		$uid = mysqli_insert_id($db_conx);
 		// Establish their row in the useroptions table
@@ -140,7 +143,7 @@ if(isset($_POST["u"])){
     //     $headers .= "Content-type: text/html; charset=iso-8859-1\n";
 		// mail($to, $subject, $message, $headers);
 		//echo 'Signup successful.  Please login <a href="login.php">here</a>.';
-		echo 'Activation email sent.  Please check your inbox.';
+		//echo 'Activation email sent.  Please check your inbox.';
 		exit();
 	}
 	exit();
