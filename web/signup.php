@@ -105,7 +105,7 @@ if(isset($_POST["u"])){
 	  $p_hash = hash('sha256', $p.$salt);
 
 
-		<!-- $p_hash = $p; -->
+		//$p_hash = $p;
 		// Add user info into the database table for the main site table
 		$sql = "INSERT INTO users (username, email, password_hash, salt, gender, country, ip, signup, lastlogin, notescheck)
 		        VALUES('$u','$e','$p_hash', $s, '$g','$c','$ip',now(),now(),now())";
