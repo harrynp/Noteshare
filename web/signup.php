@@ -101,8 +101,8 @@ if(isset($_POST["u"])){
 	// END FORM DATA ERROR HANDLING
 	    // Begin Insertion of data into the database
 		// Hash the password and apply your own mysterious unique salt
-		$salt = crypt($p)
-	  $p_hash = hash('sha256', $p.$salt)
+		$salt = crypt($p);
+	  $p_hash = hash('sha256', $p.$salt);
 
 
 		<!-- $p_hash = $p; -->
