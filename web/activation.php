@@ -7,7 +7,7 @@ if (isset($_GET['id']) && isset($_GET['u']) && isset($_GET['e']) && isset($_GET[
 	$e = mysqli_real_escape_string($db_conx, $_GET['e']);
 	$p = mysqli_real_escape_string($db_conx, $_GET['p']);
 	// Evaluate the lengths of the incoming $_GET variable
-	if($id == "" || strlen($u) < 3 || strlen($e) < 5 || strlen($p) != 74){
+	if($id == "" || strlen($u) < 3 || strlen($e) < 5 || strlen($p) != 64){
 		// Log this issue into a text file and email details to yourself
 		header("location: message.php?msg=activation_string_length_issues");
     	exit();
