@@ -52,11 +52,7 @@ while ($row = mysqli_fetch_array($user_query, MYSQLI_ASSOC)) {
 if($gender == "f"){
 	$sex = "Female";
 }
-$sql_url = "SELECT avatar FROM users WHERE username='$u' LIMIT 1";
-$avatar_query = mysqli_query($db_conx, $sql_url);
-while($avatar_url = mysqli_fetch_field($avatar_query)){
-$profile_pic = '<img src="'.$avatar_url->avatar.'" alt="'.$u.'">';
-}
+$profile_pic = '<img src="'.$avatar.'" alt="'.$u.'">';
 if($avatar == NULL){
 	$profile_pic = '<img src="images/avatardefault.gif" alt="'.$u.'">';
 }
