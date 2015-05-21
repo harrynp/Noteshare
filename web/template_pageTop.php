@@ -24,7 +24,7 @@ if($user_ok == true) {
   <div id="pageTopWrap">
     <div id="pageTopLogo">
       <a href="index.php">
-        <img src="images/NoteShare Logo.png" alt="logo" title="Friendstr">
+        <img src="images/NoteShare_Logo.png" alt="logo" title="Friendstr">
       </a>
     </div>
     <div id="pageTopRest">
