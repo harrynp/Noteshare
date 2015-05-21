@@ -29,7 +29,6 @@ if(isset($_POST["e"])){
     $db_pass_hash = $row[2];
 		$salt = $row[3];
 		$p_hash = hash('sha256', $p.$salt)
-		$
 		if($p_hash != $db_pass_hash){
 			echo "login_failed";
             exit();
