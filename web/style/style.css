@@ -59,7 +59,7 @@ body { margin: 0px; font-family: Tahoma, Geneva, sans-serif; font-size: 14px; }
 }
 /* PAGE BOTTOM */
 #pageBottom{
-	background: #666;
+	background: blue;
 	padding: 24px;
 	font-size: 12px;
 	color: #CCC;

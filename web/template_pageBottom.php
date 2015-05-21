@@ -1,1 +1,1 @@
-<div id="pageBottom">&copy;2015 Friendstr</div>
+<div id="pageBottom">&copy;2015 NoteShare</div>
