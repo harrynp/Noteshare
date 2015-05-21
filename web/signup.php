@@ -128,12 +128,13 @@ if(isset($_POST["u"])){
 						setHtml('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>NoteShare Message</title></head><body style="margin:0px; font-family:Tahoma, Geneva, sans-serif;"><div style="padding:10px; background:#333; font-size:24px; color:#CCC;"><a href="http://secure-savannah-9905.herokuapp.com/"><img src="http://secure-savannah-9905.herokuapp.com/web/images/NoteShare_Logo.png" width="36" height="30" alt="NoteShare" style="border:none; float:left;"></a>NoteShare Account Activation</div><div style="padding:24px; font-size:17px;">Hello '.$u.',<br /><br />Click the link below to activate your account when ready:<br /><br /><a href="http://secure-savannah-9905.herokuapp.com/activation.php?id='.$uid.'&u='.$u.'&e='.$e.'&p='.$p_hash.'">Click here to activate your account now</a><br /><br />Login after successful activation using your:<br />* E-mail Address: <b>'.$e.'</b></div></body></html>');
 		try {
 		    $sendgrid->send($email);
-		} catch(\SendGrid\Exception $e) {
-		    echo $e->getCode();
-		    foreach($e->getErrors() as $er) {
+		} catch(\SendGrid\Exception $except) {
+		    echo $except->getCode();
+		    foreach($except->getErrors() as $er) {
 		        echo $er;
 		    }
 		}
+		echo 'Activation email sent.  Please check your inbox at.'. $e . '.';
 		exit();
 	}
 	exit();
