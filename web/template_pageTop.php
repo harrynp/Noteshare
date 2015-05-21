@@ -3,9 +3,11 @@ include_once("php_includes/check_login_status.php");
 $envelope = '';
 $loginLink = '<a href="login.php">Log In</a> &nbsp; | &nbsp; <a href="signup.php">Sign Up</a>';
 $user_profile = "";
+$settings = "";
 if($user_ok == true) {
 	$sql = "SELECT notescheck FROM users WHERE username='$log_username' LIMIT 1";
 	$user_profile = '<a href="user.php?u='.$log_username.'"><img src="images/profile.png" alt="My Profile" title="My Profile"/></a>';
+	$settings = '<a href="settings.php?u='.$log_username.'"><img src="images/settings.jpg" alt="My Settings" title="My Settings"/></a>';
 	$query = mysqli_query($db_conx, $sql);
 	$row = mysqli_fetch_row($query);
 	$notescheck = $row[0];
@@ -36,6 +38,7 @@ if($user_ok == true) {
       <div id="menu2">
         <div>
 					<?php echo $user_profile; ?>
+					<?php echo $settings; ?>
           <!--<a href="#">Menu_Item_1</a>
           <a href="#">Menu_Item_2</a> -->
         </div>

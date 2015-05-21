@@ -39,7 +39,7 @@ if(isset($_POST["e"])){
 			$_SESSION['password'] = $db_pass_hash;
 			setcookie("id", $db_id, strtotime( '+30 days' ), "/", "", "", TRUE);
 			setcookie("user", $db_username, strtotime( '+30 days' ), "/", "", "", TRUE);
-    		setcookie("pass", $db_pass_str, strtotime( '+30 days' ), "/", "", "", TRUE);
+    	setcookie("pass", $db_pass_hash, strtotime( '+30 days' ), "/", "", "", TRUE);
 			// UPDATE THEIR "IP" AND "LASTLOGIN" FIELDS
 			$sql = "UPDATE users SET ip='$ip', lastlogin=now() WHERE username='$db_username' LIMIT 1";
             $query = mysqli_query($db_conx, $sql);
