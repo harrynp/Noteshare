@@ -54,7 +54,7 @@ if($gender == "f"){
 }
 $sql_url = "SELECT avatar FROM users WHERE username='$u' LIMIT 1";
 $avatar_query = mysqli_query($db_conx, $sql_url);
-$profile_pic = '<img src=$avatar_query alt="'.$u.'">';
+$profile_pic = '<img src="'$avatar_query'" alt="'.$u.'">';
 if($avatar == NULL){
 	$profile_pic = '<img src="images/avatardefault.gif" alt="'.$u.'">';
 }
