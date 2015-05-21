@@ -108,7 +108,7 @@ if(isset($_POST["u"])){
 		//$p_hash = $p;
 		// Add user info into the database table for the main site table
 		$sql = "INSERT INTO users (username, email, password_hash, salt, gender, country, ip, signup, lastlogin, notescheck)
-		        VALUES('$u','$e','$p_hash', $salt, '$g','$c','$ip',now(),now(),now())";
+		        VALUES('$u','$e','$p_hash', '$salt', '$g','$c','$ip',now(),now(),now())";
 		$query = mysqli_query($db_conx, $sql);
 		$uid = mysqli_insert_id($db_conx);
 		// Establish their row in the useroptions table
