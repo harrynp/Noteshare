@@ -17,19 +17,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
     try {
         // FIXME: do not use 'name' for upload (that's the original filename from the user's computer)
         $upload = $s3->upload($bucket, $_FILES['userfile']['name'], fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
-        $u = "";
-        if(isset($_GET["u"]))
-        {
-            $u = preg_replace('#[^a-z0-9]#i', '', $_GET['u']);
-        }
-        else {
-            header("location: #");
-            exit();
-        }
+        // $u = "";
+        // if(isset($_POST["user"]))
+        // {
+        //     $u = preg_replace('#[^a-z0-9]#i', '', $_POST['user']);
+        // }
+        // else {
+        //     header("location: #");
+        //     exit();
+        // }
         $url = $upload->get('ObjectURL');
 
-        $sql = "UPDATE users SET avatar='$url' WHERE username='$u' LIMIT 1";
-        echo $sql;
+        $sql = "UPDATE users SET avatar='$url' WHERE username='$log_username' LIMIT 1";
         $query = mysqli_query($db_conx, $sql);
         mysqli_close($db_conx);
 
@@ -42,5 +41,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
         <form enctype="multipart/form-data" action="<?=$_SERVER['PHP_SELF']?>" method="POST">
             <input name="userfile" type="file"><input type="submit" value="Upload">
         </form>
+        <div>
+        <?php echo $sql; ?>
+        </div>
     </body>
 </html>
