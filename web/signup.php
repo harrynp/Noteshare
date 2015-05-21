@@ -125,7 +125,7 @@ if(isset($_POST["u"])){
 		$email->addTo($e)->
 						setFrom('app366080987@heroku.com')->
 						setSubject("NoteShare Account Activation")->
-						setHtml('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>NoteShare Message</title></head><body style="margin:0px; font-family:Tahoma, Geneva, sans-serif;"><div style="padding:10px; background:#333; font-size:24px; color:#CCC;"><a href="http://secure-savannah-9905.herokuapp.com/"><img src="http://secure-savannah-9905.herokuapp.com/web/images/logo.png" width="36" height="30" alt="NoteShare" style="border:none; float:left;"></a>NoteShare Account Activation</div><div style="padding:24px; font-size:17px;">Hello '.$u.',<br /><br />Click the link below to activate your account when ready:<br /><br /><a href="http://secure-savannah-9905.herokuapp.com/activation.php?id='.$uid.'&u='.$u.'&e='.$e.'&p='.$p_hash.'">Click here to activate your account now</a><br /><br />Login after successful activation using your:<br />* E-mail Address: <b>'.$e.'</b></div></body></html>');
+						setHtml('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>NoteShare Message</title></head><body style="margin:0px; font-family:Tahoma, Geneva, sans-serif;"><div style="padding:10px; background:#333; font-size:24px; color:#CCC;"><a href="http://secure-savannah-9905.herokuapp.com/"><img src="http://secure-savannah-9905.herokuapp.com/web/images/NoteShare_Logo.png" width="36" height="30" alt="NoteShare" style="border:none; float:left;"></a>NoteShare Account Activation</div><div style="padding:24px; font-size:17px;">Hello '.$u.',<br /><br />Click the link below to activate your account when ready:<br /><br /><a href="http://secure-savannah-9905.herokuapp.com/activation.php?id='.$uid.'&u='.$u.'&e='.$e.'&p='.$p_hash.'">Click here to activate your account now</a><br /><br />Login after successful activation using your:<br />* E-mail Address: <b>'.$e.'</b></div></body></html>');
 		try {
 		    $sendgrid->send($email);
 		} catch(\SendGrid\Exception $e) {
@@ -134,16 +134,6 @@ if(isset($_POST["u"])){
 		        echo $er;
 		    }
 		}
-		 //$to = "$e";
-		 //$from = "harrynp@uci.edu";
-		 //$subject = 'NoteShare Account Activation';
-		 //$message = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Friendster Message</title></head><body style="margin:0px; font-family:Tahoma, Geneva, sans-serif;"><div style="padding:10px; background:#333; font-size:24px; color:#CCC;"><a href="http://www.yoursitename.com"><img src="http://www.yoursitename.com/images/logo.png" width="36" height="30" alt="yoursitename" style="border:none; float:left;"></a>yoursitename Account Activation</div><div style="padding:24px; font-size:17px;">Hello '.$u.',<br /><br />Click the link below to activate your account when ready:<br /><br /><a href="http://www.yoursitename.com/activation.php?id='.$uid.'&u='.$u.'&e='.$e.'&p='.$p_hash.'">Click here to activate your account now</a><br /><br />Login after successful activation using your:<br />* E-mail Address: <b>'.$e.'</b></div></body></html>';
-		 //$headers = "From: $from\n";
-    //     $headers .= "MIME-Version: 1.0\n";
-    //     $headers .= "Content-type: text/html; charset=iso-8859-1\n";
-		// mail($to, $subject, $message, $headers);
-		//echo 'Signup successful.  Please login <a href="login.php">here</a>.';
-		//echo 'Activation email sent.  Please check your inbox.';
 		exit();
 	}
 	exit();
