@@ -18,7 +18,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
         // FIXME: do not use 'name' for upload (that's the original filename from the user's computer)
         $upload = $s3->upload($bucket, $_FILES['userfile']['name'], fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
         $u = "";
-        if(isset($_GET["u"]))
+        if(isset($_POST["user"]))
         {
             $u = preg_replace('#[^a-z0-9]#i', '', $_GET['u']);
         }
