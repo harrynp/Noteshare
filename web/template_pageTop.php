@@ -7,7 +7,7 @@ $settings = "";
 if($user_ok == true) {
 	$sql = "SELECT notescheck FROM users WHERE username='$log_username' LIMIT 1";
 	$user_profile = '<a href="user.php?u='.$log_username.'"><img src="images/profile.png" alt="My Profile" title="My Profile"/></a>';
-	$settings = '<a href="settings.php?u='.$log_username.'"><img src="images/settings.jpg" alt="My Settings" title="My Settings"/></a>';
+	$settings = '<a href="settings.php?u='.$log_username.'"><img src="images/android-settings.svg" alt="My Settings" title="My Settings"/></a>';
 	$query = mysqli_query($db_conx, $sql);
 	$row = mysqli_fetch_row($query);
 	$notescheck = $row[0];
