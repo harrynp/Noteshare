@@ -27,7 +27,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
             exit();
         }
         $url = $upload->get('ObjectURL');
+
         $sql = "UPDATE users SET avatar='$url' WHERE username='$u' LIMIT 1";
+        echo $sql;
         $query = mysqli_query($db_conx, $sql);
         mysqli_close($db_conx);
 
