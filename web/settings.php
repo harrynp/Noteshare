@@ -1,6 +1,9 @@
 <?php
-require('../vendor/autoload.php');
-// this will simply read AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY from env vars
+session_start();
+include_once("php_includes/db_conx.php")
+include_once("php_includes/check_login_status.php");
+require ('../vendor/autoload.php');// this will simply read AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY from env vars
+
 $s3 = Aws\S3\S3Client::factory();
 $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!');
 ?>
@@ -14,6 +17,20 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
     try {
         // FIXME: do not use 'name' for upload (that's the original filename from the user's computer)
         $upload = $s3->upload($bucket, $_FILES['userfile']['name'], fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
+        $u = "";
+        if(isset($_GET["u"]))
+        {
+            $u = preg_replace('#[^a-z0-9]#i', '', $_GET['u']);
+        }
+        else {
+            header("location: #");
+            exit();
+        }
+        $url = $upload->get('ObjectURL');
+        $sql = "UPDATE users SET avatar='$url' WHERE username='$u' LIMIT 1";
+        $query = mysqli_query($db_conx, $sql);
+        mysqli_close($db_conx);
+
 ?>
         <p>Upload <a href="<?=htmlspecialchars($upload->get('ObjectURL'))?>">successful</a> :)</p>
 <?php } catch(Exception $e) { ?>

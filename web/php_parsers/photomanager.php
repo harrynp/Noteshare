@@ -10,6 +10,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
         // FIXME: do not use 'name' for upload (that's the original filename from the user's computer)
         $upload = $s3->upload($bucket, $_FILES['userfile']['name'], fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
         }
-    catch(Exception $e) {}
+    catch(Exception $e) {echo "error"}
 }
 ?>
