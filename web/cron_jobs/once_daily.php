@@ -1,6 +1,15 @@
 <?php
-require_once("../php_includes/db_conx.php");
+// require_once("../php_includes/db_conx.php");
 // This block deletes all accounts that do not activate after 3 days
+//From db_conx.php
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+$server = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$db = substr($url["path"], 1);
+$db_conx = mysqli_connect($server, $username, $password, $db);
+
 $sql = "SELECT id, username FROM users WHERE signup<=CURRENT_DATE - INTERVAL 3 DAY AND activated='0'";
 $query = mysqli_query($db_conx, $sql);
 $numrows = mysqli_num_rows($query);
