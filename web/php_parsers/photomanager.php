@@ -8,6 +8,10 @@ $s3 = Aws\S3\S3Client::factory();
 $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!');
 ?>
 <?php
+if($user_ok != true || $log_username == "") {
+	exit();
+}?>
+<?php
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES['userfile']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['userfile']['tmp_name'])) {
     // FIXME: add more validation, e.g. using ext/fileinfo
     // FIXME: do not use 'name' for upload (that's the original filename from the user's computer)
