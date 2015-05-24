@@ -5,7 +5,7 @@ $u = "";
 if(isset($_GET["u"])){
 	$u = preg_replace('#[^a-z0-9]#i', '', $_GET['u']);
 } else {
-    header("location: http://www.friendster.com");
+    header("location: http://secure-savannah-9905.herokuapp.com/");
     exit();
 }
 $photo_form = "";
@@ -29,12 +29,12 @@ if($u == $log_username && $user_ok == true){
 	$photo_form .=   '<p><input type="submit" value="Upload Photo Now"></p>';
 	$photo_form .= '</form>';
 }
-// Select the user galleries
-$gallery_list = "";
+// Select the user notes
+$note_listt = "";
 $sql = "SELECT DISTINCT gallery FROM photos WHERE user='$u'";
 $query = mysqli_query($db_conx, $sql);
 if(mysqli_num_rows($query) < 1){
-	$gallery_list = "This user has not uploaded any photos yet.";
+	$note_list = "This user has not uploaded any photos yet.";
 } else {
 	while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
 		$gallery = $row["gallery"];
@@ -44,12 +44,12 @@ if(mysqli_num_rows($query) < 1){
 		$filequery = mysqli_query($db_conx, "SELECT filename FROM photos WHERE user='$u' AND gallery='$gallery' ORDER BY RAND() LIMIT 1");
 		$filerow = mysqli_fetch_row($filequery);
 		$file = $filerow[0];
-		$gallery_list .= '<div>';
-		$gallery_list .=   '<div onclick="showGallery(\''.$gallery.'\',\''.$u.'\')">';
-		$gallery_list .=     '<img src="user/'.$u.'/'.$file.'" alt="cover photo">';
-		$gallery_list .=   '</div>';
-		$gallery_list .=   '<b>'.$gallery.'</b> ('.$count.')';
-		$gallery_list .= '</div>';
+		$note_list .= '<div>';
+		$note_list .=   '<div onclick="showGallery(\''.$gallery.'\',\''.$u.'\')">';
+		$note_list .=     '<img src="user/'.$u.'/'.$file.'" alt="cover photo">';
+		$note_list .=   '</div>';
+		$note_list .=   '<b>'.$gallery.'</b> ('.$count.')';
+		$note_list .= '</div>';
     }
 }
 ?>
@@ -141,7 +141,7 @@ function deletePhoto(id){
 <div id="pageMiddle">
   <div id="photo_form"><?php echo $photo_form; ?></div>
   <h2 id="section_title"><?php echo $u; ?>&#39;s Photo Galleries</h2>
-  <div id="galleries"><?php echo $gallery_list; ?></div>
+  <div id="galleries"><?php echo $note_list; ?></div>
   <div id="photos"></div>
   <div id="picbox"></div>
   <p style="clear:left;">These photos belong to <a href="user.php?u=<?php echo $u; ?>"><?php echo $u; ?></a></p>

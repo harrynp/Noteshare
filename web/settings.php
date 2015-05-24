@@ -22,15 +22,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
     try {
         // FIXME: do not use 'name' for upload (that's the original filename from the user's computer)
         $upload = $s3->upload($bucket, $_FILES['userfile']['name'], fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
-        // $u = "";
-        // if(isset($_POST["user"]))
-        // {
-        //     $u = preg_replace('#[^a-z0-9]#i', '', $_POST['user']);
-        // }
-        // else {
-        //     header("location: #");
-        //     exit();
-        // }
+
         $url = $upload->get('ObjectURL');
 
         $sql = "UPDATE users SET avatar='$url' WHERE username='$log_username' LIMIT 1";
