@@ -23,24 +23,42 @@ if(isset($_POST["e"])){
 		$hashTempPass = md5($tempPass);
 		$sql = "UPDATE useroptions SET temp_pass='$hashTempPass' WHERE username='$u' LIMIT 1";
 	    $query = mysqli_query($db_conx, $sql);
-		$to = "$e";
-		$from = "no-reply@friendster.com";
-		$headers ="From: $from\n";
-		$headers .= "MIME-Version: 1.0\n";
-		$headers .= "Content-type: text/html; charset=iso-8859-1 \n";
-		$subject ="Friendster Temporary Password";
-		$msg = '<h2>Hello '.$u.'</h2><p>This is an automated message from Friendster. If you did not recently initiate the Forgot Password process, please disregard this email.</p><p>You indicated that you forgot your login password. We can generate a temporary password for you to log in with, then once logged in you can change your password to anything you like.</p><p>After you click the link below your password to login will be:<br /><b>'.$tempPass.'</b></p><p><a href="http://www.friendster.com/forgot_pass.php?u='.$u.'&p='.$hashTempPass.'">Click here now to apply the temporary password shown below to your account</a></p><p>If you do not click the link in this email, no changes will be made to your account. In order to set your login password to the temporary password you must click the link above.</p>';
-		if(mail($to,$subject,$msg,$headers)) {
-			echo "success";
+			// Email the user their activation link
+			require '../vendor/autoload.php';
+			$sendgrid = new SendGrid('app36608097@heroku.com', 'zeqckzkd7900');
+			$email = new SendGrid\Email();
+			$email->addTo($e)->
+							setFrom('app366080987@heroku.com')->
+							setSubject("NoteShare Account Activation")->
+							setHtml('<h2>Hello '.$u.'</h2><p>This is an automated message from NoteShare. If you did not recently initiate the Forgot Password process, please disregard this email.</p><p>You indicated that you forgot your login password. We can generate a temporary password for you to log in with, then once logged in you can change your password to anything you like.</p><p>After you click the link below your password to login will be:<br /><b>'.$tempPass.'</b></p><p><a href="http://secure-savannah-9905.herokuapp.com/forgot_pass.php?u='.$u.'&p='.$hashTempPass.'">Click here now to apply the temporary password shown below to your account</a></p><p>If you do not click the link in this email, no changes will be made to your account. In order to set your login password to the temporary password you must click the link above.</p>');
+			try {
+			    $sendgrid->send($email);
+			} catch(\SendGrid\Exception $except) {
+			    echo $except->getCode();
+			    foreach($except->getErrors() as $er) {
+			        echo $er;
+			    }
+			}
+			echo 'Email sent.  Please check your inbox at.'. $e . '.';
 			exit();
-		} else {
-			echo "email_send_failed";
-			exit();
-		}
-    } else {
-        echo "no_exist";
-    }
-    exit();
+		//$to = "$e";
+		//$from = "no-reply@friendster.com";
+		//$headers ="From: $from\n";
+		//$headers .= "MIME-Version: 1.0\n";
+		//$headers .= "Content-type: text/html; charset=iso-8859-1 \n";
+		//$subject ="Friendster Temporary Password";
+		//$msg = '<h2>Hello '.$u.'</h2><p>This is an automated message from NoteShare. If you did not recently initiate the Forgot Password process, please disregard this email.</p><p>You indicated that you forgot your login password. We can generate a temporary password for you to log in with, then once logged in you can change your password to anything you like.</p><p>After you click the link below your password to login will be:<br /><b>'.$tempPass.'</b></p><p><a href="http://www.friendster.com/forgot_pass.php?u='.$u.'&p='.$hashTempPass.'">Click here now to apply the temporary password shown below to your account</a></p><p>If you do not click the link in this email, no changes will be made to your account. In order to set your login password to the temporary password you must click the link above.</p>';
+		//if(mail($to,$subject,$msg,$headers)) {
+		//	echo "success";
+		//	exit();
+		//} else {
+		//	echo "email_send_failed";
+		//	exit();
+		//}
+    //} else {
+    //    echo "no_exist";
+    //}
+    //exit();
 }
 ?><?php
 // EMAIL LINK CLICK CALLS THIS CODE TO EXECUTE
