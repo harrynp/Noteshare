@@ -10,7 +10,9 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
 <html>
     <head><meta charset="UTF-8"></head>
     <body>
-        <h1>S3 upload example</h1>
+      <div id="pageMiddle">
+        <?php include_once("template_pageTop.php"); ?>
+        <h1>Profile Picture</h1>
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES['userfile']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['userfile']['tmp_name'])) {
     // FIXME: add more validation, e.g. using ext/fileinfo
@@ -44,5 +46,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
         <div>
         <?php echo $sql; ?>
         </div>
+      </div>
+        <?php include_once("template_pageBottom.php"); ?>
     </body>
 </html>
