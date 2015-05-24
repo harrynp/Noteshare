@@ -22,6 +22,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
     $sql = "UPDATE users SET avatar='$url' WHERE username='$log_username' LIMIT 1";
     $query = mysqli_query($db_conx, $sql);
     mysqli_close($db_conx);
+    header("#");
     exit();
   }
 ?>
