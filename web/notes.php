@@ -13,7 +13,7 @@ $photo_form = "";
 $isOwner = "no";
 if($u == $log_username && $user_ok == true){
 	$isOwner = "yes";
-	$photo_form  = '<form id="photo_form" enctype="multipart/form-data" method="post" action="php_parsers/photo_system.php">';
+	$photo_form  = '<form id="photo_form" enctype="multipart/form-data" method="post" action="php_parsers/notemanger.php">';
 	$photo_form .=   '<h3>Hi '.$u.', add a new photo into one of your galleries</h3>';
 	$photo_form .=   '<b>Input class:</b> ';
 	$photo_form .=   '<input type="text" name="class" required>';
