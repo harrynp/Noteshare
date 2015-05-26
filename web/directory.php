@@ -29,7 +29,7 @@ print '<table border="1">';
 while($row = $results->fetch_assoc()) {
     print '<tr>';
     print '<td><a href="https://secure-savannah-9905.herokuapp.com/user.php?u='.$row["username"].'">'.$row["username"].'</a></td>';
-    print '<td>'.$row["avatar"].'</td>';
+    print '<td><img src="'.$row["avatar"].'" alt="user"style="width:100px;height:100px;"</td>';
     print '</tr>';
 }  
 print '</table>';
