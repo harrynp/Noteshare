@@ -16,12 +16,14 @@ require ('../vendor/autoload.php');// this will simply read AWS_ACCESS_KEY_ID an
 
     <body>
     <?php include_once("template_pageTop.php"); ?>
+
       <div id="pageMiddle">
+
       <?php 
 $sql = "SELECT username, avatar FROM users";
-$query = mysqli_query($db_conx, $sql);
+$results = mysqli_query($db_conx, $sql);
 //MySqli Select Query
-$results = $mysqli->query("SELECT username, avatar FROM users");
+//$results = $mysqli->query("SELECT username, avatar FROM users");
 
 print '<table border="1">';
 while($row = $results->fetch_assoc()) {
