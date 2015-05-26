@@ -19,10 +19,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
 
     $url = $upload->get('ObjectURL');
     $sql = "INSERT INTO photos(user, class, url, uploaddate) VALUES ('$log_username','$class','$url',now())";
+    echo $sql;
     // $sql = "UPDATE users SET avatar='$url' WHERE username='$log_username' LIMIT 1";
     $query = mysqli_query($db_conx, $sql);
     mysqli_close($db_conx);
-    header("location: ../photos.php?u=$log_username");
+    header("location: ../notes.php?u=$log_username");
+    echo $sql;
     exit();
   }
 ?>

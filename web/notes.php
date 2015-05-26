@@ -14,12 +14,12 @@ $isOwner = "no";
 if($u == $log_username && $user_ok == true){
 	$isOwner = "yes";
 	$photo_form  = '<form id="photo_form" enctype="multipart/form-data" method="post" action="php_parsers/notemanger.php">';
-	$photo_form .=   '<h3>Hi '.$u.', add a new photo into one of your galleries</h3>';
+	$photo_form .=   '<h3>Hi '.$u.', add a new note into one of your classes</h3>';
 	$photo_form .=   '<b>Input class:</b> ';
 	$photo_form .=   '<input type="text" name="class" required>';
-	$photo_form .=   ' &nbsp; &nbsp; &nbsp; <b>Choose Photo:</b> ';
+	$photo_form .=   ' &nbsp; &nbsp; &nbsp; <b>Choose PDF file:</b> ';
 	$photo_form .=   '<input type="file" name="userfile" accept="application/pdf" required>';
-	$photo_form .=   '<p><input type="submit" value="Upload Photo Now"></p>';
+	$photo_form .=   '<p><input type="submit" value="Upload Note Now"></p>';
 	$photo_form .= '</form>';
 }
 // Select the user notes
@@ -27,7 +27,7 @@ $note_listt = "";
 $sql = "SELECT DISTINCT gallery FROM photos WHERE user='$u'";
 $query = mysqli_query($db_conx, $sql);
 if(mysqli_num_rows($query) < 1){
-	$note_list = "This user has not uploaded any photos yet.";
+	$note_list = "This user has not uploaded any notes yet.";
 } else {
 	while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
 		$gallery = $row["gallery"];
