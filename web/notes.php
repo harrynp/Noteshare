@@ -13,7 +13,7 @@ $note_form = "";
 $isOwner = "no";
 if($u == $log_username && $user_ok == true){
 	$isOwner = "yes";
-	$note_form  = '<form id="note_form" enctype="multipart/form-data" method="post" action="php_parsers/notemanger.php">';
+	$note_form  = '<form id="note_form" enctype="multipart/form-data" method="post" action="php_parsers/notemanager.php">';
 	$note_form .=   '<h3>Hi '.$u.', add a new note into one of your classes</h3>';
 	$note_form .=   '<b>Input class:</b> ';
 	$note_form .=   '<input type="text" name="class" required>';
