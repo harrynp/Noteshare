@@ -8,22 +8,22 @@ if(isset($_GET["u"])){
     header("location: http://secure-savannah-9905.herokuapp.com/");
     exit();
 }
-$photo_form = "";
+$note_form = "";
 // Check to see if the viewer is the account owner
 $isOwner = "no";
 if($u == $log_username && $user_ok == true){
 	$isOwner = "yes";
-	$photo_form  = '<form id="photo_form" enctype="multipart/form-data" method="post" action="php_parsers/notemanger.php">';
-	$photo_form .=   '<h3>Hi '.$u.', add a new note into one of your classes</h3>';
-	$photo_form .=   '<b>Input class:</b> ';
-	$photo_form .=   '<input type="text" name="class" required>';
-	$photo_form .=   ' &nbsp; &nbsp; &nbsp; <b>Choose PDF file:</b> ';
-	$photo_form .=   '<input type="file" name="userfile" accept="application/pdf" required>';
-	$photo_form .=   '<p><input type="submit" value="Upload Note Now"></p>';
-	$photo_form .= '</form>';
+	$note_form  = '<form id="note_form" enctype="multipart/form-data" method="post" action="php_parsers/notemanger.php">';
+	$note_form .=   '<h3>Hi '.$u.', add a new note into one of your classes</h3>';
+	$note_form .=   '<b>Input class:</b> ';
+	$note_form .=   '<input type="text" name="class" required>';
+	$note_form .=   ' &nbsp; &nbsp; &nbsp; <b>Choose PDF file:</b> ';
+	$note_form .=   '<input type="file" name="userfile" accept="application/pdf" required>';
+	$note_form .=   '<p><input type="submit" value="Upload Note Now"></p>';
+	$note_form .= '</form>';
 }
 // Select the user notes
-$note_listt = "";
+$note_list = "";
 $sql = "SELECT DISTINCT gallery FROM photos WHERE user='$u'";
 $query = mysqli_query($db_conx, $sql);
 if(mysqli_num_rows($query) < 1){
@@ -54,7 +54,7 @@ if(mysqli_num_rows($query) < 1){
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="style/style.css">
 <style type="text/css">
-form#photo_form{background:#F3FDD0; border:#AFD80E 1px solid; padding:20px;}
+form#note_form{background:#F3FDD0; border:#AFD80E 1px solid; padding:20px;}
 div#galleries{}
 div#galleries > div{float:left; margin:20px; text-align:center; cursor:pointer;}
 div#galleries > div > div {height:100px; overflow:hidden;}
@@ -132,7 +132,7 @@ function deletePhoto(id){
 <body>
 <?php include_once("template_pageTop.php"); ?>
 <div id="pageMiddle">
-  <div id="photo_form"><?php echo $photo_form; ?></div>
+  <div id="note_form"><?php echo $note_form; ?></div>
   <h2 id="section_title"><?php echo $u; ?>&#39;s Photo Galleries</h2>
   <div id="galleries"><?php echo $note_list; ?></div>
   <div id="photos"></div>
