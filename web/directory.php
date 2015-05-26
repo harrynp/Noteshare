@@ -28,7 +28,7 @@ $results = mysqli_query($db_conx, $sql);
 print '<table border="1">';
 while($row = $results->fetch_assoc()) {
     print '<tr>';
-    print '<td><a href="https://secure-savannah-9905.herokuapp.com/user.php?u='.$row["username"].'>'.$row["username"].'</a></td>';
+    print '<td><a href="https://secure-savannah-9905.herokuapp.com/user.php?u='.$row["username"].'">'.$row["username"].'</a></td>';
     print '<td>'.$row["avatar"].'</td>';
     print '</tr>';
 }  
