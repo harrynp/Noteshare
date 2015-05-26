@@ -13,7 +13,7 @@ $photo_form = "";
 $isOwner = "no";
 if($u == $log_username && $user_ok == true){
 	$isOwner = "yes";
-	$photo_form  = '<form id="photo_form" enctype="multipart/form-data" method="post" action="php_parsers/photo_system.php">';
+	$photo_form  = '<form id="photo_form" enctype="multipart/form-data" method="post" action="php_parsers/photogallerymanager.php">';
 	$photo_form .=   '<h3>Hi '.$u.', add a new photo into one of your galleries</h3>';
 	$photo_form .=   '<b>Choose Gallery:</b> ';
 	$photo_form .=   '<select name="gallery" required>';
@@ -41,7 +41,7 @@ if(mysqli_num_rows($query) < 1){
 		$countquery = mysqli_query($db_conx, "SELECT COUNT(id) FROM photos WHERE user='$u' AND gallery='$gallery'");
 		$countrow = mysqli_fetch_row($countquery);
 		$count = $countrow[0];
-		$filequery = mysqli_query($db_conx, "SELECT filename FROM photos WHERE user='$u' AND gallery='$gallery' ORDER BY RAND() LIMIT 1");
+		$filequery = mysqli_query($db_conx, "SELECT url FROM photos WHERE user='$u' AND gallery='$gallery' ORDER BY RAND() LIMIT 1");
 		$filerow = mysqli_fetch_row($filequery);
 		$file = $filerow[0];
 		$gallery_list .= '<div>';
@@ -81,7 +81,7 @@ function showGallery(gallery,user){
 	_("section_title").innerHTML = user+'&#39;s '+gallery+' Gallery &nbsp; <button onclick="backToGalleries()">Go back to all galleries</button>';
 	_("photos").style.display = "block";
 	_("photos").innerHTML = 'loading photos ...';
-	var ajax = ajaxObj("POST", "php_parsers/photo_system.php");
+	var ajax = ajaxObj("POST", "php_parsers/photomanager.php");
 	ajax.onreadystatechange = function() {
 		if(ajaxReturn(ajax) == true) {
 			_("photos").innerHTML = '';
