@@ -6,8 +6,8 @@ $user_profile = "";
 $settings = "";
 if($user_ok == true) {
 	$sql = "SELECT notescheck FROM users WHERE username='$log_username' LIMIT 1";
-	$user_profile = '<a href="user.php?u='.$log_username.'"><img src="images/profile.png" alt="My Profile" title="My Profile" width="40" height="40"/></a>';
-	$settings = '<a href="settings.php?u='.$log_username.'"><img src="images/settings-64.png" alt="My Settings" title="My Settings" width="40" height="40"/></a>';
+	$user_profile = '<a href="user.php?u='.$log_username.'"><img src="images/profile.png" alt="My Profile" title="My Profile" width="40" height="30"/></a>';
+	$settings = '<a href="settings.php?u='.$log_username.'"><img src="images/settings-64.png" alt="My Settings" title="My Settings" width="40" height="30"/></a>';
 	$query = mysqli_query($db_conx, $sql);
 	$row = mysqli_fetch_row($query);
 	$notescheck = $row[0];
