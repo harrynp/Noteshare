@@ -18,7 +18,7 @@ if($u == $log_username && $user_ok == true){
 	$photo_form .=   '<b>Input class:</b> ';
 	$photo_form .=   '<input type="text" name="class" required>';
 	$photo_form .=   ' &nbsp; &nbsp; &nbsp; <b>Choose Photo:</b> ';
-	$photo_form .=   '<input type="file" name="photo" accept="application/pdf" required>';
+	$photo_form .=   '<input type="file" name="userfile" accept="application/pdf" required>';
 	$photo_form .=   '<p><input type="submit" value="Upload Photo Now"></p>';
 	$photo_form .= '</form>';
 }
