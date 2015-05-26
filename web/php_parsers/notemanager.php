@@ -15,11 +15,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
     // FIXME: add more validation, e.g. using ext/fileinfo
     // FIXME: do not use 'name' for upload (that's the original filename from the user's computer)
     $upload = $s3->upload($bucket, $_FILES['userfile']['name'], fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
-    $gallery = $_GET['gallery']
 
     $url = $upload->get('ObjectURL');
     $sql = "INSERT INTO photos(user, gallery, url, uploaddate) VALUES ('$log_username','$gallery','$url',now())";
-    // $sql = "UPDATE users SET avatar='$url' WHERE username='$log_username' LIMIT 1";
     $query = mysqli_query($db_conx, $sql);
     mysqli_close($db_conx);
     header("location: ../photos.php?u=$log_username");
