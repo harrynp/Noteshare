@@ -25,7 +25,7 @@ if($u == $log_username && $user_ok == true){
 	$photo_form .=     '<option value="Random">Random</option>';
 	$photo_form .=   '</select>';
 	$photo_form .=   ' &nbsp; &nbsp; &nbsp; <b>Choose Photo:</b> ';
-	$photo_form .=   '<input type="file" name="photo" accept="image/*" required>';
+	$photo_form .=   '<input type="file" name="userfile" accept="image/*" required>';
 	$photo_form .=   '<p><input type="submit" value="Upload Photo Now"></p>';
 	$photo_form .= '</form>';
 }
