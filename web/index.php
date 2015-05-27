@@ -8,8 +8,7 @@
 </head>
 <body>
 <?php include_once("template_pageTop.php"); ?>
-<div id="pageMiddle">
-  &nbsp;
+<div id="pageMiddle" style="background-image: url('image/background.jpg'); background-size: cover, auto;">
 </div>
 <?php include_once("template_pageBottom.php"); ?>
 </body>
