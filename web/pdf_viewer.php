@@ -8,7 +8,7 @@ if(isset($_GET["url"])){
 }
 $pdf_viewer = '<embed src="'.urlencode($url).'" type="application/pdf" />';
 // $pdf_viewer =<iframe src="http://docs.google.com/gview?url=http://domain.com/your_pdf.pdf&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>
-$pdf_viewer .= $url;
+// $pdf_viewer .= $url;
 ?>
 
 <!DOCTYPE html>
