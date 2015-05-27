@@ -1,6 +1,7 @@
 <?php
 if(isset($_GET["url"])){
-	$url = $_GET["url"];
+	// $url = $_GET["url"];
+  $url = trim($_GET["url"], '/');
 } else {
     header("location: http://secure-savannah-9905.herokuapp.com/");
     exit();
