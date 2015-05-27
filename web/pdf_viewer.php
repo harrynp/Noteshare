@@ -7,7 +7,7 @@ if(isset($_GET["f"])){
     exit();
 }
 $pdf_viewer = '<object data="'.'$f'.'"></object>';
-// $pdf_viewer = $f;
+$pdf_viewer .= $f;
 ?>
 
 <!DOCTYPE html>
