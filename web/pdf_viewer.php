@@ -2,7 +2,6 @@
 if(isset($_GET["url"])){
 	// $url = $_GET["url"];
   $url = substr($_GET["url"], 39);
-  $pdf_viewer = urlencode($url);
   // if (!preg_match('#^http(s)?://#', $url)) {
     // $pdf_viewer = $url;
   //   $url = 'https://securesavanah.s3.amazonaws.com/' . urlencode($url);
@@ -11,7 +10,7 @@ if(isset($_GET["url"])){
     header("location: http://secure-savannah-9905.herokuapp.com/");
     exit();
 }
-$pdf_viewer .= '<embed src="https://securesavanah.s3.amazonaws.com/'.$url.'" type="application/pdf" />';
+$pdf_viewer .= '<embed src="https://securesavanah.s3.amazonaws.com/'.urlencode($url).'" type="application/pdf" />';
 // $pdf_viewer =<iframe src="http://docs.google.com/gview?url=http://domain.com/your_pdf.pdf&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>
 $pdf_viewer .= $url;
 ?>
