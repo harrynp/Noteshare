@@ -1,6 +1,6 @@
 <?php
 $file = $_GET['f'];
-$pdf_viewer = '<object data=".'$file'."></object>'
+$pdf_viewer = '<object data=".'$file'."></object>';
 ?>
 
 <!DOCTYPE html>
