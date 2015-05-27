@@ -6,7 +6,7 @@ if(isset($_GET["f"])){
     header("location: http://secure-savannah-9905.herokuapp.com/");
     exit();
 }
-$pdf_viewer = '<embed src="'.$f.'" type="application/pdf"></object>';
+$pdf_viewer = '<embed src="'.$f.'" type="application/pdf"/>';
 $pdf_viewer .= $f;
 ?>
 
@@ -14,7 +14,7 @@ $pdf_viewer .= $f;
 <html>
 <head>
 <meta charset="UTF-8">
-<title>NoteShare PDF Viwere</title>
+<title>NoteShare PDF Viewer</title>
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="style/style.css">
 </head>
