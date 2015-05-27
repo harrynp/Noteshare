@@ -2,9 +2,10 @@
 if(isset($_GET["url"])){
 	// $url = $_GET["url"];
   $url = trim($_GET["url"], '/');
+  $pdf_viewer = $url;
   if (!preg_match('#^http(s)?://#', $url)) {
     $pdf_viewer = $url;
-      $url = 'http://' . urlencode($url);
+    $url = 'http://' . urlencode($url);
   }
 } else {
     header("location: http://secure-savannah-9905.herokuapp.com/");
