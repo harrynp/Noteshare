@@ -6,7 +6,7 @@ if(isset($_GET["f"])){
     header("location: http://secure-savannah-9905.herokuapp.com/");
     exit();
 }
-$pdf_viewer = '<object data="'.'$f'.'" type="application/pdf">alt : <a href="'.'$f'.'">test.pdf</a></object>';
+$pdf_viewer = '<object data="'.$f.'" type="application/pdf">alt : <a href="'.'$f'.'">test.pdf</a></object>';
 $pdf_viewer .= $f;
 ?>
 
