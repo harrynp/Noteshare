@@ -17,7 +17,7 @@ require ('../vendor/autoload.php');// this will simply read AWS_ACCESS_KEY_ID an
 
       <div id="pageMiddle">
 
-      <?php 
+      <?php
 $sql = "SELECT user, url, class FROM notes";
 $results = mysqli_query($db_conx, $sql);
 //MySqli Select Query
@@ -27,9 +27,9 @@ print '<table border="1">';
 while($row = $results->fetch_assoc()) {
     print '<tr>';
     print '<td><a href="https://secure-savannah-9905.herokuapp.com/user.php?u='.$row["user"].'">'.$row["user"].'</a></td>';
-    print '<td><a href="'.$row["url"].'">'.$row["user"].'</a></td>';
+    print '<td><a href="pdf_viewer.php/?f='.$row["url"].'">'.$row["user"].'</a></td>';
     print '</tr>';
-}  
+}
 print '</table>';
 
 // Frees the memory associated with a result
@@ -37,7 +37,7 @@ $results->free();
 
 mysqli_close($db_conx);
 ?>
-      	
+
       </div>
     <?php include_once("template_pageBottom.php"); ?>
     </body>
