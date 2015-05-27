@@ -57,6 +57,10 @@ body { margin: 0px; font-family: Tahoma, Geneva, sans-serif; font-size: 14px; }
 	margin: 0px auto;
 	height: 900px;
 }
+#indexMiddle{
+	margin: 0px auto;
+	height: 900px;
+}
 /* PAGE BOTTOM */
 #pageBottom{
 	background: blue;
