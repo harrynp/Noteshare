@@ -1,13 +1,14 @@
 <?php
-$f = "";
-if(isset($_GET["f"])){
-	$f = $_GET["f"];
+$url = "";
+if(isset($_GET["url"])){
+	$url = $_GET["url"];
 } else {
     header("location: http://secure-savannah-9905.herokuapp.com/");
     exit();
 }
-$pdf_viewer = '<embed src="'.$f.'" type="application/pdf"/>';
-$pdf_viewer .= $f;
+$pdf_viewer = '<embed src="'.urlencode($url).'" type="application/pdf" />';
+// $pdf_viewer =<iframe src="http://docs.google.com/gview?url=http://domain.com/your_pdf.pdf&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>
+$pdf_viewer .= $url;
 ?>
 
 <!DOCTYPE html>
