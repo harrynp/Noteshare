@@ -1,7 +1,7 @@
 <?php
 if(isset($_GET["url"])){
 	// $url = $_GET["url"];
-  $url = substr($_GET["url"], 7);
+  $url = substr($_GET["url"], 8);
   if (!preg_match('#^http(s)?://#', $url)) {
     $pdf_viewer = $url;
     $url = 'http://' . urlencode($url);
