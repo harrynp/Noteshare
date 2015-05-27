@@ -3,13 +3,14 @@ if(isset($_GET["url"])){
 	// $url = $_GET["url"];
   $url = trim($_GET["url"], '/');
   if (!preg_match('#^http(s)?://#', $url)) {
+    $pdf_viewer = $url;
       $url = 'http://' . urlencode($url);
   }
 } else {
     header("location: http://secure-savannah-9905.herokuapp.com/");
     exit();
 }
-$pdf_viewer = '<embed src="'.$url.'" type="application/pdf" />';
+$pdf_viewer .= '<embed src="'.$url.'" type="application/pdf" />';
 // $pdf_viewer =<iframe src="http://docs.google.com/gview?url=http://domain.com/your_pdf.pdf&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>
 $pdf_viewer .= $url;
 ?>
