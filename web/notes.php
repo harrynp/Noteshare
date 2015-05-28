@@ -15,8 +15,10 @@ if($u == $log_username && $user_ok == true){
 	$isOwner = "yes";
 	$note_form  = '<form id="note_form" enctype="multipart/form-data" method="post" action="php_parsers/notemanager.php">';
 	$note_form .=   '<h3>Hi '.$u.', add a new note into one of your classes</h3>';
-	$note_form .=   '<b>Input class:</b> ';
+	$note_form .=   '<b>Class:</b> ';
 	$note_form .=   '<input type="text" name="class" required>';
+	$note_form .=   '<b>Note name:</b> ';
+	$note_form .=   '<input type="text" name="note_name" required>';
 	$note_form .=   ' &nbsp; &nbsp; &nbsp; <b>Choose PDF file:</b> ';
 	$note_form .=   '<input type="file" name="userfile" accept="application/pdf" required>';
 	$note_form .=   '<p><input type="submit" value="Upload Note Now"></p>';
