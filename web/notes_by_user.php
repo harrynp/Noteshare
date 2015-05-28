@@ -18,7 +18,7 @@ require ('../vendor/autoload.php');// this will simply read AWS_ACCESS_KEY_ID an
       <div id="pageMiddle">
 
       <?php
-$sql = "SELECT user, url, class FROM notes";
+$sql = "SELECT user, url, class FROM notes ORDER BY class GROUP BY class";
 $results = mysqli_query($db_conx, $sql);
 //MySqli Select Query
 //$results = $mysqli->query("SELECT username, avatar FROM users");
@@ -27,6 +27,7 @@ print '<table border="1">';
 while($row = $results->fetch_assoc()) {
     print '<tr>';
     print '<td><a href="https://secure-savannah-9905.herokuapp.com/user.php?u='.$row["user"].'">'.$row["user"].'</a></td>';
+    print '<td><a href="https://secure-savannah-9905.herokuapp.com/user.php?u='.$row["user"].'">'.$row["class"].'</a></td>';
     print '<td><a href="pdf_viewer.php?url='.$row["url"].'">'.$row["user"].'</a></td>';
     print '</tr>';
 }
