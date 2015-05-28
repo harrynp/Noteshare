@@ -11,7 +11,7 @@ if(isset($_GET["url"])){
     exit();
 }
 // $pdf_viewer = '<embed src="'.$url.'" type="application/pdf"></object>';
-$pdf_viewer = '<iframe src="http://docs.google.com/gview?url='.$url.'" style="width:600px; height:500px;" frameborder="0"></iframe>';
+$pdf_viewer = '<iframe src="http://docs.google.com/gview?url='.$url.'&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>';
 // $pdf_viewer =<iframe src="http://docs.google.com/gview?url=http://domain.com/your_pdf.pdf&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>
 $pdf_viewer .= $url;
 ?>
