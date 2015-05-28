@@ -18,7 +18,7 @@ require ('../vendor/autoload.php');// this will simply read AWS_ACCESS_KEY_ID an
       <div id="pageMiddle">
 
       <?php
-$sql = "SELECT user, url, class FROM notes ORDER BY class GROUP BY class";
+$sql = "SELECT user, url, class FROM notes GROUP BY class ORDER BY class;";
 $results = mysqli_query($db_conx, $sql);
 //MySqli Select Query
 //$results = $mysqli->query("SELECT username, avatar FROM users");
