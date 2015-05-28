@@ -15,8 +15,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
     // FIXME: add more validation, e.g. using ext/fileinfo
     // FIXME: do not use 'name' for upload (that's the original filename from the user's computer)
 		$note_name = $_POST['note_name'];
-    $upload = $s3->upload($bucket, $log_username.'_'.$note_name.'.pdf', fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
-    $class = $_POST['class'];
+		$class = $_POST['class'];
+    $upload = $s3->upload($bucket, $log_username.'_'.$class.'_'.$note_name.'.pdf', fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
 
     $url = $upload->get('ObjectURL');
     $sql = "INSERT INTO notes(user, class, url, uploaddate) VALUES ('$log_username','$class','$url',now())";
