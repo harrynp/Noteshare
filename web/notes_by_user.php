@@ -28,7 +28,7 @@ while($row = $results->fetch_assoc()) {
     print '<tr>';
     print '<td><a href="https://secure-savannah-9905.herokuapp.com/user.php?u='.$row["user"].'">'.$row["user"].'</a></td>';
     print '<td><a href="https://secure-savannah-9905.herokuapp.com/user.php?u='.$row["user"].'">'.$row["class"].'</a></td>';
-    print '<td><a href="pdf_viewer.php?url='.$row["url"].'">'.$row["user"].'</a></td>';
+    print '<td><a href="http://docs.google.com/gview?url='.$row["url"].'">'.$row["user"].'</a></td>';
     print '</tr>';
 }
 print '</table>';
