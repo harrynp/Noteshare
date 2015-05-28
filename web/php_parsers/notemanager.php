@@ -14,8 +14,8 @@ if($user_ok != true || $log_username == "") {
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES['userfile']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['userfile']['tmp_name'])) {
     // FIXME: add more validation, e.g. using ext/fileinfo
     // FIXME: do not use 'name' for upload (that's the original filename from the user's computer)
-		$note_name = $_Post['note_name'];
-    $upload = $s3->upload($bucket, $note_name.'.pdf', fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
+		$note_name = $_POST['note_name'];
+    $upload = $s3->upload($bucket, $log_username.'_'.$note_name.'.pdf', fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
     $class = $_POST['class'];
 
     $url = $upload->get('ObjectURL');
