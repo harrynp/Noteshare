@@ -3,6 +3,7 @@ body { margin: 0px; font-family: Tahoma, Geneva, sans-serif; font-size: 14px; }
 #pageTop {
 	background-color: blue;
 	height: 90px;
+	position: fixed;
 }
 #pageTop > #pageTopWrap {
 	width: 1000px;
