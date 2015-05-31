@@ -36,13 +36,13 @@ if(mysqli_num_rows($query) < 1){
 		$countquery = mysqli_query($db_conx, "SELECT COUNT(id) FROM notes WHERE user='$u' AND class='$class'");
 		$countrow = mysqli_fetch_row($countquery);
 		$count = $countrow[0];
-		$filequery = mysqli_query($db_conx, "SELECT url FROM notes WHERE user='$u' AND class='$class' ORDER BY class LIMIT 1");
-		$filerow = mysqli_fetch_row($filequery);
-		$file = $filerow[0];
+		// $filequery = mysqli_query($db_conx, "SELECT url FROM notes WHERE user='$u' AND class='$class' ORDER BY class LIMIT 1");
+		// $filerow = mysqli_fetch_row($filequery);
+		// $file = $filerow[0];
 		$note_list .= '<div>';
-		$note_list .= '<div>';
-		$note_list .=     '<a href="'.$file.'"><img src="images/pdf.png" alt="'.$file.'"></a>';
-		$note_list .= '</div>';
+		$note_list .=   '<div onclick="showGallery(\''.$class.'\',\''.$u.'\')">';
+		$note_list .=     '<img src="images/pdf.png" alt="Class Notes">';
+		$note_list .= 	'</div>';
 		$note_list .=   '<b>'.$class.'</b> ('.$count.')';
 		$note_list .= '</div>';
     }
@@ -52,7 +52,7 @@ if(mysqli_num_rows($query) < 1){
 <html>
 <head>
 <meta charset="UTF-8">
-<title><?php echo $u; ?> Notes</title>
+<title><?php echo $u; ?>'s' Notes</title>
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="style/style.css">
 <style type="text/css">
@@ -60,7 +60,7 @@ form#note_form{background:#F3FDD0; border:#AFD80E 1px solid; padding:20px;}
 div#classes{}
 div#classes > div{float:left; margin:20px; text-align:center; cursor:pointer;}
 div#classes > div > div {height:100px; overflow:hidden;}
-div#classes > div > div > a > img{height:100px; width:100px; cursor:pointer;}
+div#classes > div > div > img{height:100px; width:100px; cursor:pointer;}
 div#notes{display:none; border:#666 1px solid; padding:20px;}
 div#notes > div{float:left; width:125px; height:80px; overflow:hidden; margin:20px;}
 div#notes > div > img{width:125px; cursor:pointer;}
@@ -70,6 +70,33 @@ div#picbox > button{ display:block; float:right; font-size:36px; padding:3px 16p
 </style>
 <script src="js/main.js"></script>
 <script src="js/ajax.js"></script>
+<script>
+function showClass(class,user){
+	_("classes").style.display = "none";
+	_("section_title").innerHTML = user+'&#39;s '+class+' notes &nbsp; <button onclick="backToClasses()">Go back to all classes</button>';
+	_("notes").style.display = "block";
+	_("notes").innerHTML = 'loading notes ...';
+	var ajax = ajaxObj("POST", "php_parsers/notemanager.php");
+	ajax.onreadystatechange = function() {
+		if(ajaxReturn(ajax) == true) {
+			_("notes").innerHTML = '';
+			var notes = ajax.responseText.split("|||");
+			for (var i = 0; i < pics.length; i++){
+				var note = notes[i].split("|");
+				// _("notes").innerHTML += '<div><img onclick="noteShowcase(\''+pics[i]+'\')" src="user/'+user+'/'+pic[1]+'" alt="pic"><div>';
+				_("notes").innerHTML += '<a href=pdf_viewer?url="'+notes[1]+'"><img src="images/pdf.png" alt="'+notes[1]+'"></a>';
+			}
+			_("notes").innerHTML += '<p style="clear:left;"></p>';
+		}
+	}
+	ajax.send("show=classnotes&class="+class+"&user="+user);
+}
+function backToClasses(){
+	_("notes").style.display = "none";
+	_("section_title").innerHTML = "<?php echo $u; ?>&#39;s Notes";
+	_("classes").style.display = "block";
+}
+<
 </head>
 <body>
 <?php include_once("template_pageTop.php"); ?>
