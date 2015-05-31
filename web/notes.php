@@ -52,7 +52,7 @@ if(mysqli_num_rows($query) < 1){
 <html>
 <head>
 <meta charset="UTF-8">
-<title><?php echo $u; ?> Photos</title>
+<title><?php echo $u; ?> Notes</title>
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="style/style.css">
 <style type="text/css">
@@ -60,7 +60,7 @@ form#note_form{background:#F3FDD0; border:#AFD80E 1px solid; padding:20px;}
 div#classes{}
 div#classes > div{float:left; margin:20px; text-align:center; cursor:pointer;}
 div#classes > div > div {height:100px; overflow:hidden;}
-div#classes > div > div > a > img{height:75px; width:75px; cursor:pointer;}
+div#classes > div > div > a > img{height:100px; width:100px; cursor:pointer;}
 div#notes{display:none; border:#666 1px solid; padding:20px;}
 div#notes > div{float:left; width:125px; height:80px; overflow:hidden; margin:20px;}
 div#notes > div > img{width:125px; cursor:pointer;}
