@@ -78,7 +78,8 @@ function showClass(cls,user){
 		if(ajaxReturn(ajax) == true) {
 			_("notes").innerHTML = '';
 			var notes = ajax.responseText.split("|||");
-			var note_name = note[1].replace("https://securesavanah.s3.amazonaws.com/"+user+"_"+cls, "");
+			// var note_name = note[1].replace("https://securesavanah.s3.amazonaws.com/"+user+"_"+cls, "");
+			var note_name = "";
 			note_name = note_name.replace(".pdf", "");
 			for (var i = 0; i < notes.length; i++){
 				var note = notes[i].split("|");
