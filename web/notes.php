@@ -53,6 +53,19 @@ if(mysqli_num_rows($query) < 1){
 <title><?php echo $u; ?> Photos</title>
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="style/style.css">
+<style type="text/css">
+form#note_form{background:#F3FDD0; border:#AFD80E 1px solid; padding:20px;}
+div#classes{}
+div#classes > div{float:left; margin:20px; text-align:center; cursor:pointer;}
+div#classes > div > div {height:100px; overflow:hidden;}
+div#classes > div > div > img{width:150px; cursor:pointer;}
+div#notes{display:none; border:#666 1px solid; padding:20px;}
+div#notes > div{float:left; width:125px; height:80px; overflow:hidden; margin:20px;}
+div#notes > div > img{width:125px; cursor:pointer;}
+div#picbox{display:none; padding-top:36px;}
+div#picbox > img{max-width:800px; display:block; margin:0px auto;}
+div#picbox > button{ display:block; float:right; font-size:36px; padding:3px 16px;}
+</style>
 <script src="js/main.js"></script>
 <script src="js/ajax.js"></script>
 </head>
@@ -61,7 +74,7 @@ if(mysqli_num_rows($query) < 1){
 <div id="pageMiddle">
   <div id="note_form"><?php echo $note_form; ?></div>
   <h2 id="section_title"><?php echo $u; ?>&#39;s Notes</h2>
-  <div id="galleries"><?php echo $note_list; ?></div>
+  <div id="classes"><?php echo $note_list; ?></div>
   <div id="notes"></div>
   <p style="clear:left;">These notes belong to <a href="user.php?u=<?php echo $u; ?>"><?php echo $u; ?></a></p>
 </div>
