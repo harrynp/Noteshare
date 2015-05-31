@@ -40,7 +40,7 @@ if(mysqli_num_rows($query) < 1){
 		$filerow = mysqli_fetch_row($filequery);
 		$file = $filerow[0];
 		$note_list .= '<div>';
-		$note_list .=   '<div onclick="showClassnote(\''.$class.'\',\''.$u.'\')">';
+		$note_list .=   '<div onclick="showClass(\''.$class.'\',\''.$u.'\')">';
 		$note_list .=     '<img src="images/pdf.png" alt="Class Notes">';
 		$note_list .= 	'</div>';
 		$note_list .=   '<b>'.$class.'</b> ('.$count.')';
@@ -68,9 +68,9 @@ div#notes > div > img{width:125px; cursor:pointer;}
 <script src="js/main.js"></script>
 <script src="js/ajax.js"></script>
 <script>
-function showClassnote(class,user){
+function showClass(cls,user){
 	_("classes").style.display = "none";
-	_("section_title").innerHTML = user+'&#39;s '+class+' notes &nbsp; <button onclick="backToClasses()">Go back to all classes</button>';
+	_("section_title").innerHTML = user+'&#39;s '+cls+' notes &nbsp; <button onclick="backToClasses()">Go back to all classes</button>';
 	_("notes").style.display = "block";
 	_("notes").innerHTML = 'loading notes ...';
 	var ajax = ajaxObj("POST", "php_parsers/notemanager.php");
@@ -85,7 +85,7 @@ function showClassnote(class,user){
 			_("notes").innerHTML += '<p style="clear:left;"></p>';
 		}
 	}
-	ajax.send("show=classnotes&class="+class+"&user="+user);
+	ajax.send("show=classnotes&class="+cls+"&user="+user);
 }
 function backToClasses(){
 	_("notes").style.display = "none";
