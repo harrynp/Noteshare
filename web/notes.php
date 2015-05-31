@@ -36,9 +36,9 @@ if(mysqli_num_rows($query) < 1){
 		$countquery = mysqli_query($db_conx, "SELECT COUNT(id) FROM notes WHERE user='$u' AND class='$class'");
 		$countrow = mysqli_fetch_row($countquery);
 		$count = $countrow[0];
-		$filequery = mysqli_query($db_conx, "SELECT url FROM notes WHERE user='$u' AND class='$class' ORDER BY class LIMIT 1");
-		$filerow = mysqli_fetch_row($filequery);
-		$file = $filerow[0];
+		// $filequery = mysqli_query($db_conx, "SELECT url FROM notes WHERE user='$u' AND class='$class' ORDER BY class LIMIT 1");
+		// $filerow = mysqli_fetch_row($filequery);
+		// $file = $filerow[0];
 		$note_list .= '<div>';
 		$note_list .=   '<div onclick="showGallery(\''.$class.'\',\''.$u.'\')">';
 		$note_list .=     '<img src="images/pdf.png" alt="Class Notes">';
@@ -96,7 +96,7 @@ function backToClasses(){
 	_("section_title").innerHTML = "<?php echo $u; ?>&#39;s Notes";
 	_("classes").style.display = "block";
 }
-<
+</script>
 </head>
 <body>
 <?php include_once("template_pageTop.php"); ?>
