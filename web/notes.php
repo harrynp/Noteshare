@@ -80,7 +80,7 @@ function showClass(cls,user){
 			var notes = ajax.responseText.split("|||");
 			for (var i = 0; i < notes.length; i++){
 				var note = notes[i].split("|");
-				_("notes").innerHTML += '<a href=pdf_viewer.php?url="'+notes[1]+'"><img src="images/pdf.png" alt="'+notes[1]+' height="100px" width="100px""></a>';
+				_("notes").innerHTML += '<a href="pdf_viewer.php?url='+notes[1]+'"><img src="images/pdf.png" alt="'+notes[1]+' height="100px" width="100px""></a>';
 			}
 			_("notes").innerHTML += '<p style="clear:left;"></p>';
 		}
