@@ -34,9 +34,7 @@ if (isset($_POST["show"]) && $_POST["show"] == "classnotes"){
 	while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
 		$id = $row["id"];
 		$url = $row["url"];
-		$description = $row["description"];
-		$uploaddate = $row["uploaddate"];
-		$picstring .= "$id|$url|$description|$uploaddate|||";
+		$picstring .= "$id|$url|||";
     }
 	mysqli_close($db_conx);
 	$picstring = trim($picstring, "|||");
