@@ -5,8 +5,7 @@ require ('../../vendor/autoload.php');// this will simply read AWS_ACCESS_KEY_ID
 
 $s3 = Aws\S3\S3Client::factory();
 $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!');
-?>
-<?php
+?><?php
 if($user_ok != true || $log_username == "") {
 	exit();
 }?><?php
