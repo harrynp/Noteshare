@@ -81,7 +81,7 @@ function showClass(cls,user){
 			for (var i = 0; i < notes.length; i++){
 				var note = notes[i].split("|");
 				var note_name = note[0].replace("https://securesavanah.s3.amazonaws.com/"+user+"_"+cls+"_", "");
-				_("notes").innerHTML += '<a href="pdf_viewer.php?url='+notes[0]+'"><img src="images/pdf.png" alt="'+notes[0]+' height="100px" width="100px""></a><b>'+note_name+'</b>';
+				_("notes").innerHTML += '<div><a href="pdf_viewer.php?url='+notes[0]+'"><img src="images/pdf.png" alt="'+notes[0]+' height="100px" width="100px""></a><b>'+note_name+'</b></div>';
 			}
 			_("notes").innerHTML += '<p style="clear:left;"></p>';
 		}
