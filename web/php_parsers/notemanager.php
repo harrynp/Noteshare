@@ -36,7 +36,7 @@ if (isset($_POST["show"]) && $_POST["show"] == "classnotes"){
 		$url = $row["url"];
 		$description = $row["description"];
 		$uploaddate = $row["uploaddate"];
-		$picstring .= "$id|$filename|$description|$uploaddate|||";
+		$picstring .= "$id|$url|$description|$uploaddate|||";
     }
 	mysqli_close($db_conx);
 	$picstring = trim($picstring, "|||");
