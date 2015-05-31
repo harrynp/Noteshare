@@ -40,7 +40,7 @@ if(mysqli_num_rows($query) < 1){
 		// $filerow = mysqli_fetch_row($filequery);
 		// $file = $filerow[0];
 		$note_list .= '<div>';
-		$note_list .=   '<div onclick="showGallery(\''.$class.'\',\''.$u.'\')">';
+		$note_list .=   '<div onclick="showClass(\''.$class.'\',\''.$u.'\')">';
 		$note_list .=     '<img src="images/pdf.png" alt="Class Notes">';
 		$note_list .= 	'</div>';
 		$note_list .=   '<b>'.$class.'</b> ('.$count.')';
