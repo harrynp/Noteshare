@@ -67,32 +67,32 @@ div#notes > div > img{width:125px; cursor:pointer;}
 </style>
 <script src="js/main.js"></script>
 <script src="js/ajax.js"></script>
-<!-- // <script>
-// function showClass(class,user){
-// 	_("classes").style.display = "none";
-// 	_("section_title").innerHTML = user+'&#39;s '+class+' notes &nbsp; <button onclick="backToClasses()">Go back to all classes</button>';
-// 	_("notes").style.display = "block";
-// 	_("notes").innerHTML = 'loading notes ...';
-// 	var ajax = ajaxObj("POST", "php_parsers/notemanager.php");
-// 	ajax.onreadystatechange = function() {
-// 		if(ajaxReturn(ajax) == true) {
-// 			_("notes").innerHTML = '';
-// 			var notes = ajax.responseText.split("|||");
-// 			for (var i = 0; i < notes.length; i++){
-// 				var note = notes[i].split("|");
-// 				_("notes").innerHTML += '<a href=pdf_viewer?url="'+notes[1]+'"><img src="images/pdf.png" alt="'+notes[1]+'"></a>';
-// 			}
-// 			_("notes").innerHTML += '<p style="clear:left;"></p>';
-// 		}
-// 	}
-// 	ajax.send("show=classnotes&class="+class+"&user="+user);
-// }
-// function backToClasses(){
-// 	_("notes").style.display = "none";
-// 	_("section_title").innerHTML = "<?php echo $u; ?>&#39;s Notes";
-// 	_("classes").style.display = "block";
-// }
-// </script> -->
+<script>
+	function showClass(class,user){
+		_("classes").style.display = "none";
+		_("section_title").innerHTML = user+'&#39;s '+class+' notes &nbsp; <button onclick="backToClasses()">Go back to all classes</button>';
+		_("notes").style.display = "block";
+		_("notes").innerHTML = 'loading notes ...';
+		var ajax = ajaxObj("POST", "php_parsers/notemanager.php");
+		ajax.onreadystatechange = function() {
+			if(ajaxReturn(ajax) == true) {
+				_("notes").innerHTML = '';
+				var notes = ajax.responseText.split("|||");
+				for (var i = 0; i < notes.length; i++){
+					var note = notes[i].split("|");
+					_("notes").innerHTML += '<a href=pdf_viewer?url="'+notes[1]+'"><img src="images/pdf.png" alt="'+notes[1]+'"></a>';
+				}
+				_("notes").innerHTML += '<p style="clear:left;"></p>';
+			}
+		}
+		ajax.send("show=classnotes&class="+class+"&user="+user);
+	}
+	// function backToClasses(){
+	// 	_("notes").style.display = "none";
+	// 	_("section_title").innerHTML = "<?php echo $u; ?>&#39;s Notes";
+	// 	_("classes").style.display = "block";
+	// }
+</script>
 </head>
 <body>
 <?php include_once("template_pageTop.php"); ?>
