@@ -26,21 +26,21 @@ if($u == $log_username && $user_ok == true){
 }
 // Select the user notes
 $note_list = "";
-$sql = "SELECT DISTINCT gallery FROM photos WHERE user='$u'";
+$sql = "SELECT DISTINCT class FROM notes WHERE user='$u'";
 $query = mysqli_query($db_conx, $sql);
 if(mysqli_num_rows($query) < 1){
 	$note_list = "This user has not uploaded any notes yet.";
 } else {
 	while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
 		$class = $row["class"];
-		$countquery = mysqli_query($db_conx, "SELECT COUNT(id) FROM notes WHERE user='$u' AND gallery='$gallery'");
+		$countquery = mysqli_query($db_conx, "SELECT COUNT(id) FROM notes WHERE user='$u' AND class='$class'");
 		$countrow = mysqli_fetch_row($countquery);
 		$count = $countrow[0];
-		$filequery = mysqli_query($db_conx, "SELECT url FROM notes WHERE user='$u' AND class='$class' ORDER BY RAND() LIMIT 1");
+		$filequery = mysqli_query($db_conx, "SELECT url FROM notes WHERE user='$u' AND class='$class' ORDER BY class LIMIT 1");
 		$filerow = mysqli_fetch_row($filequery);
 		$file = $filerow[0];
 		$note_list .= '<div>';
-		$note_list .=     '<a herf="'.$file.'"><img src="images/pdf.png" alt="cover photo"></a>';
+		$note_list .=     '<a herf="'.$file.'"><img src="images/pdf.png" alt="'.$file.'" height="100px" width"100px></a>';
 		$note_list .=   '<b>'.$gallery.'</b> ('.$count.')';
 		$note_list .= '</div>';
     }
@@ -53,19 +53,6 @@ if(mysqli_num_rows($query) < 1){
 <title><?php echo $u; ?> Photos</title>
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="style/style.css">
-<style type="text/css">
-form#note_form{background:#F3FDD0; border:#AFD80E 1px solid; padding:20px;}
-div#classes{}
-div#classes > div{float:left; margin:20px; text-align:center; cursor:pointer;}
-div#classes > div > div {height:100px; overflow:hidden;}
-div#classes > div > div > img{width:150px; cursor:pointer;}
-div#photos{display:none; border:#666 1px solid; padding:20px;}
-div#photos > div{float:left; width:125px; height:80px; overflow:hidden; margin:20px;}
-div#photos > div > img{width:125px; cursor:pointer;}
-div#picbox{display:none; padding-top:36px;}
-div#picbox > img{max-width:800px; display:block; margin:0px auto;}
-div#picbox > button{ display:block; float:right; font-size:36px; padding:3px 16px;}
-</style>
 <script src="js/main.js"></script>
 <script src="js/ajax.js"></script>
 </head>
