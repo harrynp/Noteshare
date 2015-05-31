@@ -78,12 +78,11 @@ function showClass(cls,user){
 		if(ajaxReturn(ajax) == true) {
 			_("notes").innerHTML = '';
 			var notes = ajax.responseText.split("|||");
-			// var note_name = note[1].replace("https://securesavanah.s3.amazonaws.com/"+user+"_"+cls, "");
-			var note_name = "";
+			var note_name = note[1].replace("https://securesavanah.s3.amazonaws.com/"+user+"_"+cls, "");
 			note_name = note_name.replace(".pdf", "");
 			for (var i = 0; i < notes.length; i++){
 				var note = notes[i].split("|");
-				_("notes").innerHTML += '<a href="pdf_viewer.php?url='+notes[1]+'"><img src="images/pdf.png" alt="'+notes[1]+' height="100px" width="100px""></a><b>'+note_name+'</b>;
+				_("notes").innerHTML += '<a href="pdf_viewer.php?url='+notes[1]+'"><img src="images/pdf.png" alt="'+notes[1]+' height="100px" width="100px""></a><b>'+note_name+'</b>';
 			}
 			_("notes").innerHTML += '<p style="clear:left;"></p>';
 		}
