@@ -2,7 +2,7 @@
 include_once("php_includes/check_login_status.php");
 // If the page requestor is not logged in, usher them away
 if($user_ok != true || $log_username == ""){
-	header("location: http://www.friendster.com");
+	header("location: https://secure-savannah-9905.herokuapp.com/index.php");
     exit();
 }
 $notification_list = "";
