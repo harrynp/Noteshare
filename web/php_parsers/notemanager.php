@@ -32,9 +32,8 @@ if (isset($_POST["show"]) && $_POST["show"] == "classnotes"){
 	$sql = "SELECT * FROM notes WHERE user='$user' AND class='$class' ORDER BY uploaddate ASC";
 	$query = mysqli_query($db_conx, $sql);
 	while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
-		$id = $row["id"];
 		$url = $row["url"];
-		$picstring .= "$id|$url|||";
+		$picstring .= "$url|||";
     }
 	mysqli_close($db_conx);
 	$picstring = trim($picstring, "|||");
