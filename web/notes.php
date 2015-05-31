@@ -40,7 +40,9 @@ if(mysqli_num_rows($query) < 1){
 		$filerow = mysqli_fetch_row($filequery);
 		$file = $filerow[0];
 		$note_list .= '<div>';
-		$note_list .=     '<a herf="'.$file.'"><img src="images/pdf.png" alt="'.$file.'" height="75px" width"75px"></a>';
+		$note_list .= '<div>';
+		$note_list .=     '<a href="'.$file.'"><img src="images/pdf.png" alt="'.$file.'"></a>';
+		$note_list .= '</div>';
 		$note_list .=   '<b>'.$class.'</b> ('.$count.')';
 		$note_list .= '</div>';
     }
@@ -58,7 +60,7 @@ form#note_form{background:#F3FDD0; border:#AFD80E 1px solid; padding:20px;}
 div#classes{}
 div#classes > div{float:left; margin:20px; text-align:center; cursor:pointer;}
 div#classes > div > div {height:100px; overflow:hidden;}
-div#classes > div > div > img{width:150px; cursor:pointer;}
+div#classes > div > div > a > img{width:150px; cursor:pointer;}
 div#notes{display:none; border:#666 1px solid; padding:20px;}
 div#notes > div{float:left; width:125px; height:80px; overflow:hidden; margin:20px;}
 div#notes > div > img{width:125px; cursor:pointer;}
