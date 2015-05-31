@@ -61,7 +61,7 @@ div#classes{}
 div#classes > div{float:left; margin:20px; text-align:center; cursor:pointer;}
 div#classes > div > div {height:100px; overflow:hidden;}
 div#classes > div > div > img{height:100px; width:100px; cursor:pointer;}
-/*div#notes{display:none; border:#666 1px solid; padding:20px;}*/
+div#notes{display:none; border:#666 1px solid; padding:20px;}
 /*div#notes > div{float:left; width:125px; height:200px; overflow:hidden; margin:20px;}*/
 div#notes > div{float:left; margin:20px; text-align:center; cursor:pointer;}
 div#notes > div > div {height:100px; overflow:hidden;}
@@ -84,7 +84,7 @@ function showClass(cls,user){
 			for (var i = 0; i < notes.length; i++){
 				var note = notes[i].split("|");
 				var note_name = note[0].replace("https://securesavanah.s3.amazonaws.com/"+user+"_"+cls+"_", "");
-				_("notes").innerHTML += '<div><a href="pdf_viewer.php?url='+notes[0]+'"><img src="images/pdf.png" alt="'+notes[0]+' height="100px" width="100px""></a><b>'+note_name+'</b></div>';
+				_("notes").innerHTML += '<div><div><a href="pdf_viewer.php?url='+notes[0]+'"><img src="images/pdf.png" alt="'+notes[0]+' height="100px" width="100px""></a></div><b>'+note_name+'</b></div>';
 			}
 			_("notes").innerHTML += '<p style="clear:left;"></p>';
 		}
