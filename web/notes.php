@@ -81,9 +81,8 @@ function showClass(class,user){
 		if(ajaxReturn(ajax) == true) {
 			_("notes").innerHTML = '';
 			var notes = ajax.responseText.split("|||");
-			for (var i = 0; i < pics.length; i++){
+			for (var i = 0; i < notes.length; i++){
 				var note = notes[i].split("|");
-				// _("notes").innerHTML += '<div><img onclick="noteShowcase(\''+pics[i]+'\')" src="user/'+user+'/'+pic[1]+'" alt="pic"><div>';
 				_("notes").innerHTML += '<a href=pdf_viewer?url="'+notes[1]+'"><img src="images/pdf.png" alt="'+notes[1]+'"></a>';
 			}
 			_("notes").innerHTML += '<p style="clear:left;"></p>';
