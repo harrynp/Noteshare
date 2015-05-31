@@ -43,7 +43,6 @@ if($user_ok == true) {
       </div>
       <div id="menu2">
         <div>
-					<a href="directory.php"><img src="images/directory.png" alt="User Directory" title="User Directory" width="30" height="30"/></a>
 					<?php echo $user_profile; ?>
 					<?php echo $settings; ?>
 					<?php echo $my_notes; ?>
