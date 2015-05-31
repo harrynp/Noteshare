@@ -63,7 +63,9 @@ div#classes > div > div {height:100px; overflow:hidden;}
 div#classes > div > div > img{height:100px; width:100px; cursor:pointer;}
 div#notes{display:none; border:#666 1px solid; padding:20px;}
 div#notes > div{float:left; width:125px; height:80px; overflow:hidden; margin:20px;}
-div#notes > div > img{width:125px; cursor:pointer;}
+div#notes > div > div {height:100px; overflow:hidden;}
+div#notes > div > div > a > img{height:100px; width:100px; cursor:pointer;}
+/*div#notes > div > img{width:125px; cursor:pointer;}*/
 </style>
 <script src="js/main.js"></script>
 <script src="js/ajax.js"></script>
