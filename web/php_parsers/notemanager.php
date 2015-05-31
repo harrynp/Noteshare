@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
     $upload = $s3->upload($bucket, $log_username.'_'.$class.'_'.$note_name.'.pdf', fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
 
     $url = $upload->get('ObjectURL');
-    $sql = "INSERT IGNORE INTO notes(user, class, url, uploaddate) VALUES ('$log_username','$class','$url',now())";
+    $sql = "INSERT INTO notes(user, class, url, uploaddate) VALUES ('$log_username','$class','$url',now())";
     // $sql = "UPDATE users SET avatar='$url' WHERE username='$log_username' LIMIT 1";
     $query = mysqli_query($db_conx, $sql);
     mysqli_close($db_conx);
