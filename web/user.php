@@ -53,7 +53,7 @@ while ($row = mysqli_fetch_array($user_query, MYSQLI_ASSOC)) {
 if($gender == "f"){
 	$sex = "Female";
 }
-$user_notes = '<p>'.$u.'\'s notes: <a href="notes.php?u='.$u'.'">Notes</a></p>'
+$user_notes = '<p>'.$u.'\'s notes: <a href="notes.php?u='.$u'.'">Notes</a></p>';
 $profile_pic = '<img src="'.$avatar.'" alt="'.$u.'">';
 if($avatar == NULL){
 	$profile_pic = '<img src="images/avatardefault.gif" alt="'.$u.'">';
