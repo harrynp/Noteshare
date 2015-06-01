@@ -129,9 +129,9 @@ if($friend_count < 1){
 	$query = mysqli_query($db_conx, $sql);
 	while($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
 		$friend_username = $row["username"];
-		$friend_avatar = $row["avatar"];
+		$friend_avatar = $row["url"];
 		if($friend_avatar != ""){
-			$friend_pic = 'user/'.$friend_username.'/'.$friend_avatar.'';
+			$friend_pic = $friend_avatar;
 		} else {
 			$friend_pic = 'images/avatardefault.gif';
 		}
