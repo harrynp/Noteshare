@@ -26,7 +26,7 @@ if($numrows < 1){
 		if($user1avatar == NULL){
 			$user1pic = '<img src="images/avatardefault.gif" alt="'.$user1.'" class="user_pic">';
 		}
-		$notification_list .= "<p><img src=$user1pic alt=\"\"><a href='user.php?u=$initiator'>$initiator</a> | $app<br />$note</p>";
+		$notification_list .= "<p>$user1pic<a href='user.php?u=$initiator'>$initiator</a> | $app<br />$note</p>";
 	}
 }
 mysqli_query($db_conx, "UPDATE users SET notescheck=now() WHERE username='$log_username' LIMIT 1");
