@@ -125,11 +125,11 @@ if($friend_count < 1){
 			$orLogic .= "username='$user' OR ";
 	}
 	$orLogic = chop($orLogic, "OR ");
-	$sql = "SELECT username, url FROM users WHERE $orLogic";
+	$sql = "SELECT username, avatar FROM users WHERE $orLogic";
 	$query = mysqli_query($db_conx, $sql);
 	while($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
 		$friend_username = $row["username"];
-		$friend_avatar = $row["url"];
+		$friend_avatar = $row["avatar"];
 		if($friend_avatar != ""){
 			$friend_pic = $friend_avatar;
 		} else {
