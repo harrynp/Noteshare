@@ -19,9 +19,9 @@ if($numrows < 1){
 		$note = $row["note"];
 		$date_time = $row["date_time"];
 		$date_time = strftime("%b %d, %Y", strtotime($date_time));
-		$thumbquery = mysqli_query($db_conx, "SELECT avatar FROM users WHERE username='$user1' LIMIT 1");
-		$thumbrow = mysqli_fetch_row($thumbquery);
-		$user1avatar = $thumbrow[0];
+		$avatar_query = mysqli_query($db_conx, "SELECT avatar FROM users WHERE username='$user1' LIMIT 1");
+		$avatar_row = mysqli_fetch_row($avatar_query);
+		$user1avatar = $avatar_row[0];
 		$user1pic = '<img src="'.$user1avatar.'" alt="'.$user1.'" class="user_pic">';
 		if($user1avatar == NULL){
 			$user1pic = '<img src="images/avatardefault.gif" alt="'.$user1.'" class="user_pic">';
