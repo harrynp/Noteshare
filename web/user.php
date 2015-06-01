@@ -10,6 +10,7 @@ $avatar_form = "";
 $country = "";
 $joindate = "";
 $lastsession = "";
+$user_notes = "";
 // Make sure the _GET username is set, and sanitize it
 if(isset($_GET["u"])){
 	$u = preg_replace('#[^a-z0-9]#i', '', $_GET['u']);
@@ -52,6 +53,7 @@ while ($row = mysqli_fetch_array($user_query, MYSQLI_ASSOC)) {
 if($gender == "f"){
 	$sex = "Female";
 }
+$user_notes = '<p>'.$u.'\'s notes: <a href="notes.php?u='.$u'.'">Notes</a></p>'
 $profile_pic = '<img src="'.$avatar.'" alt="'.$u.'">';
 if($avatar == NULL){
 	$profile_pic = '<img src="images/avatardefault.gif" alt="'.$u.'">';
@@ -258,6 +260,7 @@ function blockToggle(type,blockee,elem){
   <p>User Level: <?php echo $userlevel; ?></p>
   <p>Join Date: <?php echo $joindate; ?></p>
   <p>Last Session: <?php echo $lastsession; ?></p>
+	<?php echo $user_notes; ?>
   <hr />
   <p>Friend Button: <span id="friendBtn"><?php echo $friend_button; ?></span> <?php echo $u." has ".$friend_count." friends"; ?> <?php echo $friends_view_all_link; ?></p>
   <p>Block Button: <span id="blockBtn"><?php echo $block_button; ?></span></p>
