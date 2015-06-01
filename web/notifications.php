@@ -36,7 +36,7 @@ if($numrows < 1){
 		$user1 = $row["user1"];
 		$datemade = $row["datemade"];
 		$datemade = strftime("%B %d", strtotime($datemade));
-		$thumbquery = mysqli_query($db_conx, "SELECT url FROM users WHERE username='$user1' LIMIT 1");
+		$thumbquery = mysqli_query($db_conx, "SELECT avatar FROM users WHERE username='$user1' LIMIT 1");
 		$thumbrow = mysqli_fetch_row($thumbquery);
 		$user1avatar = $thumbrow[0];
 		$user1pic = '<img src="'.$user1avatar.'" alt="'.$user1.'" class="user_pic">';
