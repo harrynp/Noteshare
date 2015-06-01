@@ -12,11 +12,12 @@ if($user_ok != true || $log_username == "") {
 }?>
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['password'] != ''){
-  $p = $_POST['password'];
-  $salt = crypt($p);
-  $p_hash = hash('sha256', $p.$salt);
-  $sql = "UPDATE users SET password_hash='$p_hash' AND salt='$salt' WHERE username='$log_username' LIMIT 1";
-}
+    $p = $_POST['password'];
+    $salt = crypt($p);
+    $p_hash = hash('sha256', $p.$salt);
+    $sql = "UPDATE users SET password_hash='$p_hash' AND salt='$salt' WHERE username='$log_username' LIMIT 1";
+    $query = mysqli_query($db_conx, $sql);
+  }
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES['userfile']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['userfile']['tmp_name'])) {
     // FIXME: add more validation, e.g. using ext/fileinfo
     // FIXME: do not use 'name' for upload (that's the original filename from the user's computer)
@@ -29,8 +30,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
 
     $sql = "UPDATE users SET avatar='$url' WHERE username='$log_username' LIMIT 1";
     $query = mysqli_query($db_conx, $sql);
-    mysqli_close($db_conx);
-    header("location: ../user.php?u=$log_username");
-    exit();
   }
+  mysqli_close($db_conx);
+  header("location: ../user.php?u=$log_username");
+  exit();
 ?>
