@@ -44,7 +44,7 @@ while ($row = mysqli_fetch_array($user_query, MYSQLI_ASSOC)) {
 	$gender = $row["gender"];
 	$country = $row["country"];
 	$userlevel = $row["userlevel"];
-	$avatar = $row["avatar"];
+	$avatar = $row["url"];
 	$signup = $row["signup"];
 	$lastlogin = $row["lastlogin"];
 	$joindate = strftime("%b %d, %Y", strtotime($signup));
@@ -125,7 +125,7 @@ if($friend_count < 1){
 			$orLogic .= "username='$user' OR ";
 	}
 	$orLogic = chop($orLogic, "OR ");
-	$sql = "SELECT username, avatar FROM users WHERE $orLogic";
+	$sql = "SELECT username, url FROM users WHERE $orLogic";
 	$query = mysqli_query($db_conx, $sql);
 	while($row = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
 		$friend_username = $row["username"];
