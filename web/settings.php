@@ -23,3 +23,22 @@ if($u == $log_username && $user_ok == true){
   $settings_form .= '</form>';
 }
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title><?php echo $u; ?>'s' Notes</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="style/style.css">
+<style type="text/css">
+form#settings_form{background:#F3FDD0; border:#AFD80E 1px solid; padding:20px;}
+</style>
+</head>
+<body>
+<?php include_once("template_pageTop.php"); ?>
+<div id="pageMiddle">
+  <div id="settings_form"><?php echo $settings_form; ?></div>
+</div>
+<?php include_once("template_pageBottom.php"); ?>
+</body>
+</html>
