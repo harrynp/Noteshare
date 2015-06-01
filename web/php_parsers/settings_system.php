@@ -11,6 +11,12 @@ if($user_ok != true || $log_username == "") {
 	exit();
 }?>
 <?php
+if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['password'] != ''){
+  $p = $_POST['password'];
+  $salt = crypt($p);
+  $p_hash = hash('sha256', $p.$salt);
+  $sql = "UPDATE users SET password_hash='$p_hash' AND salt='$salt' WHERE username='$log_username' LIMIT 1";
+}
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES['userfile']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['userfile']['tmp_name'])) {
     // FIXME: add more validation, e.g. using ext/fileinfo
     // FIXME: do not use 'name' for upload (that's the original filename from the user's computer)
@@ -27,12 +33,4 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
     header("location: ../user.php?u=$log_username");
     exit();
   }
-?>
-<?php
-if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['password'] != ''){
-  $p = $_POST['password'];
-  $salt = crypt($p);
-  $p_hash = hash('sha256', $p.$salt);
-  $sql = "UPDATE users SET password_hash='$p_hash' AND salt='$salt' WHERE username='$log_username' LIMIT 1";
-}
 ?>
