@@ -2,7 +2,7 @@
 include_once("php_includes/check_login_status.php");
 // Make sure the _GET "u" is set, and sanitize it
 $u = "";
-if(isset($_GET["u"])){
+if(isset($_GET["u"]) && $u == $log_username){
 	$u = preg_replace('#[^a-z0-9]#i', '', $_GET['u']);
 } else {
     header("location: http://secure-savannah-9905.herokuapp.com/");
