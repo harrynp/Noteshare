@@ -57,7 +57,7 @@ if(isset($_GET['u']) && isset($_GET['p'])){
 	$row = mysqli_fetch_row($query);
 	$salt = $row[0];
 	$p_hash = hash('sha256', $temppasshash.$salt);
-	$sql = "SELECT id FROM useroptions WHERE username='$u' AND temp_pass='$p_hash' LIMIT 1";
+	$sql = "SELECT id FROM useroptions WHERE (username='$u' AND temp_pass='$p_hash') LIMIT 1";
 	$query = mysqli_query($db_conx, $sql);
 	$numrows = mysqli_num_rows($query);
 	if($numrows == 0){
