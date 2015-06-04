@@ -48,7 +48,7 @@ if(isset($_POST["e"])){
 // EMAIL LINK CLICK CALLS THIS CODE TO EXECUTE
 if(isset($_GET['u']) && isset($_GET['p'])){
 	$u = preg_replace('#[^a-z0-9]#i', '', $_GET['u']);
-	$temppasshash = preg_replace('#[^a-z0-9]#i', '', $_GET['p']);
+	// $temppasshash = preg_replace('#[^a-z0-9]#i', '', $_GET['p']);
 	// if(strlen($temppasshash) < 10){
 	// 	exit();
 	// }
