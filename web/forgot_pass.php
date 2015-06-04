@@ -62,7 +62,7 @@ if(isset($_GET['u']) && isset($_GET['p'])){
 	} else {
 		$row = mysqli_fetch_row($query);
 		$id = $row[0];
-		$sql = "UPDATE users SET password='$p_hash', salt='$salt' WHERE id='$id' AND username='$u' LIMIT 1";
+		$sql = "UPDATE users SET password='$p', salt='$salt' WHERE id='$id' AND username='$u' LIMIT 1";
 	    $query = mysqli_query($db_conx, $sql);
 		$sql = "UPDATE useroptions SET temp_pass='', temp_salt='' WHERE username='$u' LIMIT 1";
 	    $query = mysqli_query($db_conx, $sql);
