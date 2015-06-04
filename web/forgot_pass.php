@@ -52,7 +52,7 @@ if(isset($_GET['u']) && isset($_GET['p'])){
 	// if(strlen($temppasshash) < 10){
 	// 	exit();
 	// }
-	$sql = "SELECT temp_salt FROM useroptions WHERE email='$e' LIMIT 1";
+	$sql = "SELECT temp_salt FROM useroptions WHERE username='$u' LIMIT 1";
 	$query = mysqli_query($db_conx, $sql);
 	$row = mysqli_fetch_row($query);
 	$salt = $row[0];
