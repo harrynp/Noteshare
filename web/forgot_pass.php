@@ -22,7 +22,7 @@ if(isset($_POST["e"])){
 		$tempPass = "$emailcut$randNum";
 		$salt = crypt($tempPass);
 		$p_hash = hash('sha256', $tempPass.$salt);
-		$sql = "UPDATE useroptions SET (temp_pass='$p_hash' AND temp_salt='$salt') WHERE username='$u' LIMIT 1";
+		$sql = "UPDATE useroptions SET temp_pass='$p_hash', temp_salt='$salt' WHERE username='$u' LIMIT 1";
 	    $query = mysqli_query($db_conx, $sql);
 			// Email the user their activation link
 			require '../vendor/autoload.php';
@@ -66,9 +66,9 @@ if(isset($_GET['u']) && isset($_GET['p'])){
 	} else {
 		$row = mysqli_fetch_row($query);
 		$id = $row[0];
-		$sql = "UPDATE users SET (password='$p_hash' AND salt='$salt') WHERE id='$id' AND username='$u' LIMIT 1";
+		$sql = "UPDATE users SET password='$p_hash', salt='$salt' WHERE id='$id' AND username='$u' LIMIT 1";
 	    $query = mysqli_query($db_conx, $sql);
-		$sql = "UPDATE useroptions SET (temp_pass='' AND temp_salt='') WHERE username='$u' LIMIT 1";
+		$sql = "UPDATE useroptions SET temp_pass='', temp_salt='' WHERE username='$u' LIMIT 1";
 	    $query = mysqli_query($db_conx, $sql);
 	    header("location: login.php");
         exit();
