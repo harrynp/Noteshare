@@ -66,7 +66,7 @@ if(isset($_GET['u']) && isset($_GET['p'])){
 	    $query = mysqli_query($db_conx, $sql);
 		$sql = "UPDATE useroptions SET temp_pass='', temp_salt='' WHERE username='$u' LIMIT 1";
 	    $query = mysqli_query($db_conx, $sql);
-	    // header("location: login.php");
+	    header("location: login.php");
         exit();
     }
 }
