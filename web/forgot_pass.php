@@ -21,7 +21,7 @@ if(isset($_POST["e"])){
 		$randNum = rand(10000,99999);
 		$tempPass = "$emailcut$randNum";
 		$salt = crypt($tempPass);
-		$p_hash = hash('sha256', $p.$salt);
+		$p_hash = hash('sha256', $tempPass.$salt);
 		$sql = "UPDATE useroptions SET temp_pass='$p_hash' AND temp_salt='$salt' WHERE username='$u' LIMIT 1";
 	    $query = mysqli_query($db_conx, $sql);
 			// Email the user their activation link
