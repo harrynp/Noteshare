@@ -52,11 +52,12 @@ if(isset($_GET['u']) && isset($_GET['p'])){
 	// if(strlen($temppasshash) < 10){
 	// 	exit();
 	// }
+	echo $p;
 	$sql = "SELECT id FROM useroptions WHERE (username='$u' AND temp_pass='$p') LIMIT 1";
 	$query = mysqli_query($db_conx, $sql);
 	$numrows = mysqli_num_rows($query);
 	if($numrows == 0){
-		header("location: message.php?msg=There is no match for that username with that temporary password in the system. We cannot proceed.");
+		// header("location: message.php?msg=There is no match for that username with that temporary password in the system. We cannot proceed.");
     	exit();
 	} else {
 		$row = mysqli_fetch_row($query);
@@ -65,7 +66,7 @@ if(isset($_GET['u']) && isset($_GET['p'])){
 	    $query = mysqli_query($db_conx, $sql);
 		$sql = "UPDATE useroptions SET temp_pass='', temp_salt='' WHERE username='$u' LIMIT 1";
 	    $query = mysqli_query($db_conx, $sql);
-	    header("location: login.php");
+	    // header("location: login.php");
         exit();
     }
 }
