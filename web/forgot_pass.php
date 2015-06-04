@@ -20,8 +20,9 @@ if(isset($_POST["e"])){
 		$emailcut = substr($e, 0, 4);
 		$randNum = rand(10000,99999);
 		$tempPass = "$emailcut$randNum";
-		$hashTempPass = md5($tempPass);
-		$sql = "UPDATE useroptions SET temp_pass='$hashTempPass' WHERE username='$u' LIMIT 1";
+		$salt = crypt($tempPass);
+		$p_hash = hash('sha256', $p.$salt);
+		$sql = "UPDATE useroptions SET temp_pass='$p_hash' AND temp_salt='$salt' WHERE username='$u' LIMIT 1";
 	    $query = mysqli_query($db_conx, $sql);
 			// Email the user their activation link
 			require '../vendor/autoload.php';
@@ -48,10 +49,15 @@ if(isset($_POST["e"])){
 if(isset($_GET['u']) && isset($_GET['p'])){
 	$u = preg_replace('#[^a-z0-9]#i', '', $_GET['u']);
 	$temppasshash = preg_replace('#[^a-z0-9]#i', '', $_GET['p']);
-	if(strlen($temppasshash) < 10){
-		exit();
-	}
-	$sql = "SELECT id FROM useroptions WHERE username='$u' AND temp_pass='$temppasshash' LIMIT 1";
+	// if(strlen($temppasshash) < 10){
+	// 	exit();
+	// }
+	$sql = "SELECT temp_salt FROM useroptions WHERE email='$e' LIMIT 1";
+	$query = mysqli_query($db_conx, $sql);
+	$row = mysqli_fetch_row($query);
+	$salt = $row[0];
+	$p_hash = hash('sha256', $temppasshash.$salt);
+	$sql = "SELECT id FROM useroptions WHERE username='$u' AND temp_pass='$p_hash' LIMIT 1";
 	$query = mysqli_query($db_conx, $sql);
 	$numrows = mysqli_num_rows($query);
 	if($numrows == 0){
@@ -60,9 +66,9 @@ if(isset($_GET['u']) && isset($_GET['p'])){
 	} else {
 		$row = mysqli_fetch_row($query);
 		$id = $row[0];
-		$sql = "UPDATE users SET password='$temppasshash' WHERE id='$id' AND username='$u' LIMIT 1";
+		$sql = "UPDATE users SET (password='$p_hash' AND salt='$salt') WHERE id='$id' AND username='$u' LIMIT 1";
 	    $query = mysqli_query($db_conx, $sql);
-		$sql = "UPDATE useroptions SET temp_pass='' WHERE username='$u' LIMIT 1";
+		$sql = "UPDATE useroptions SET (temp_pass='' AND temp_salt='') WHERE username='$u' LIMIT 1";
 	    $query = mysqli_query($db_conx, $sql);
 	    header("location: login.php");
         exit();
