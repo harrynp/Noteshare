@@ -53,7 +53,7 @@ if(isset($_GET['u']) && isset($_GET['p'])){
 	// 	exit();
 	// }
 	$p = $_GET['p'];
-	$sql = "SELECT id FROM useroptions WHERE (username='$u' AND temp_pass='$p') LIMIT 1";
+	$sql = "SELECT id, temp_salt FROM useroptions WHERE (username='$u' AND temp_pass='$p') LIMIT 1";
 	$query = mysqli_query($db_conx, $sql);
 	$numrows = mysqli_num_rows($query);
 	if($numrows == 0){
@@ -62,6 +62,7 @@ if(isset($_GET['u']) && isset($_GET['p'])){
 	} else {
 		$row = mysqli_fetch_row($query);
 		$id = $row[0];
+		$salt = $row[1];
 		$sql = "UPDATE users SET password_hash='$p', salt='$salt' WHERE username='$u' LIMIT 1";
 	    $query = mysqli_query($db_conx, $sql);
 		$sql = "UPDATE useroptions SET temp_pass='', temp_salt='' WHERE username='$u' LIMIT 1";
