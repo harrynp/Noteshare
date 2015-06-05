@@ -1,7 +1,6 @@
 <?php
 include_once("../php_includes/db_conx.php");
 include_once("../php_includes/check_login_status.php");
-require ('../../vendor/autoload.php');// this will simply read AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY from env var
 ?>
 <?php
 if($user_ok != true || $log_username == "") {
