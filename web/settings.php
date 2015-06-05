@@ -14,7 +14,7 @@ if(isset($_GET["u"])){
 }
 // Check to see if the viewer is the account owner
 if($u == $log_username && $user_ok == true){
-	$settings_form  = '<form id="note_form" enctype="multipart/form-data" method="post" action="php_parsers/settings_manager.php">';
+	$settings_form  = '<form id="note_form" enctype="multipart/form-data" method="post" action="php_parsers/settings_system.php">';
   $settings_form .=   '<h3>'.$u.' settings</h3>';
   $settings_form .=   '<b>Change password:</b> ';
   $settings_form .=   '<input type="text" name="password" required>';
