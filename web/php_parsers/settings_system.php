@@ -8,7 +8,7 @@ if($user_ok != true || $log_username == "") {
 	exit();
 }?>
 <?php
-if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['password'] != ''){
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $p = $_POST['password'];
     $salt = crypt($p);
     $p_hash = hash('sha256', $p.$salt);
