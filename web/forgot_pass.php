@@ -30,7 +30,7 @@ if(isset($_POST["e"])){
 			$email = new SendGrid\Email();
 			$email->addTo($e)->
 							setFrom('app366080987@heroku.com')->
-							setSubject("NoteShare Account Activation")->
+							setSubject("NoteShare Forgot Password")->
 							setHtml('<h2>Hello '.$u.'</h2><p>This is an automated message from NoteShare. If you did not recently initiate the Forgot Password process, please disregard this email.</p><p>You indicated that you forgot your login password. We can generate a temporary password for you to log in with, then once logged in you can change your password to anything you like.</p><p>After you click the link below your password to login will be:<br /><b>'.$tempPass.'</b></p><p><a href="http://secure-savannah-9905.herokuapp.com/forgot_pass.php?u='.$u.'&p='.$p_hash.'">Click here now to apply the temporary password shown below to your account</a></p><p>If you do not click the link in this email, no changes will be made to your account. In order to set your login password to the temporary password you must click the link above.</p>');
 			try {
 			    $sendgrid->send($email);

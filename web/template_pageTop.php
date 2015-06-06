@@ -11,7 +11,7 @@ if($user_ok == true) {
 	$sql = "SELECT notescheck FROM users WHERE username='$log_username' LIMIT 1";
 	$user_profile = '<a href="user.php?u='.$log_username.'"><img src="images/profile.png" alt="My Profile" title="My Profile" width="30" height="30"/></a>';
 	$settings = '<a href="settings.php?u='.$log_username.'"><img src="images/settings-64.png" alt="My Settings" title="My Settings" width="30" height="30"/></a>';
-	$my_notes = '<a href="notes.php?u='.$log_username.'"><img src="images/my_notes.jpg" alt="My Notes" title="My Notes" width="30" height="30"/></a>';
+	$my_notes = '<a href="notes.php?u='.$log_username.'"><img src="images/my_notes.png" alt="My Notes" title="My Notes" width="30" height="30"/></a>';
 	$directory = '<a href="directory.php"><img src="images/directory.svg" alt="User Directory" title="User Directory" width="30" height="30"/></a>';
 	// $note_directory = '<a href="notes_by_user.php"><img src="images/note_directory.png" alt="Note Directory" title="Note Directory" width="30" height="30"/></a>';
 	$query = mysqli_query($db_conx, $sql);
